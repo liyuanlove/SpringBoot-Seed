@@ -1,0 +1,17 @@
+package com.coder.springbootdomecollection;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@SpringBootApplication
+@MapperScan("com.coder.springbootdomecollection.mapper")
+@EnableTransactionManagement
+public class SpringbootDomeCollectionApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootDomeCollectionApplication.class, args);
+    }
+}
