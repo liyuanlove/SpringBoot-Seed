@@ -4,3 +4,5 @@
 1、集成Mybatis，使用Durid做数据源，数据库采用MySQL。
 
 2、集成MongoDB。
+
+3、集成Zookeeper。
