@@ -65,6 +65,11 @@ public class UserController {
         return userService.selectByPrimaryKey(id);
     }
 
+    @RequestMapping(value = "/j/{id}",method = RequestMethod.GET)
+    public String selectUser(@PathVariable int id){
+        return JSON.toJSONString(userService.selectByPrimaryKey(id));
+    }
+
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public String delete(@PathVariable int id){
         int i = userService.delete(id);

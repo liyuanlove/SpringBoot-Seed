@@ -2,7 +2,9 @@ package com.coder.springbootdomecollection.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     @JSONField(serialize=false)
     private Integer id;
