@@ -17,4 +17,8 @@ public interface UserService {
     User selectByPrimaryKey(int id);
 
     int delete(int id);
+
+    User findUserInMongoDB(String name);
+
+    void save(User user);
 }

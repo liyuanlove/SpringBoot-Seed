@@ -6,6 +6,7 @@ import com.coder.springbootdomecollection.model.User;
 import com.coder.springbootdomecollection.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     private JSONObject json = new JSONObject();
 
@@ -72,5 +76,22 @@ public class UserController {
         json.put("state",2);
         json.put("msg","删除失败");
         return json.toJSONString();
+    }
+
+    @GetMapping("/findByName/{name}")
+    public User findByName(@PathVariable String name) {
+        User user = userService.findUserInMongoDB(name);
+        return user;
+    }
+
+    @PostMapping("/save")
+    public User save(User user){
+        mongoTemplate.save(user);
+        return user;
+    }
+    @GetMapping("/find")
+    public List<User> find() {
+        List<User> userList = mongoTemplate.findAll(User.class);
+        return userList;
     }
 }

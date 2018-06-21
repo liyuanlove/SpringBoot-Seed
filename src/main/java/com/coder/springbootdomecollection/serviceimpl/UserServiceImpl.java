@@ -2,6 +2,7 @@ package com.coder.springbootdomecollection.serviceimpl;
 
 import com.coder.springbootdomecollection.mapper.UserMapper;
 import com.coder.springbootdomecollection.model.User;
+import com.coder.springbootdomecollection.repository.UserRepository;
 import com.coder.springbootdomecollection.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -18,6 +19,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     @Override
     public PageInfo<User> list(int pageNum, int pageSize) {
@@ -51,6 +56,13 @@ public class UserServiceImpl implements UserService {
         return userMapper.delete(id);
     }
 
+    @Override
+    public User findUserInMongoDB(String name) {
+        return userRepository.findByUserName(name);
+    }
 
-
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }
