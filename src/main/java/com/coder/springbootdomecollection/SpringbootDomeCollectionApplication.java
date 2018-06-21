@@ -14,4 +14,5 @@ public class SpringbootDomeCollectionApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootDomeCollectionApplication.class, args);
     }
+
 }
