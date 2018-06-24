@@ -125,18 +125,18 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
-        <!-- Dubbo -->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba.spring.boot</groupId>-->
-            <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
-            <!--<version>2.0.0</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>log4j</groupId>-->
-                    <!--<artifactId>log4j</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
+        <!--Dubbo-->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- ZookeeperController -->
         <dependency>
@@ -154,11 +154,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.github.sgroschupf</groupId>-->
-            <!--<artifactId>zkclient</artifactId>-->
-            <!--<version>0.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
@@ -213,25 +213,20 @@
         <!--</dependency>-->
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-dependencies</artifactId>-->
+                <!--<version>${spring-cloud.version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
 
     <build>
         <plugins>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
 
             <!-- mybatis generator 自动生成代码插件 -->
             <plugin>
@@ -246,19 +241,29 @@
             </plugin>
 
             <!-- springboot 热部署 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork><!--注意要修改这里-->
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<fork>true</fork>&lt;!&ndash;注意要修改这里&ndash;&gt;-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
+            <!-- 编译器 -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
             <!-- maven 打包 和下面的打包插件选一个-->
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-shade-plugin</artifactId>-->
-                <!--<version>1.4</version>-->
+                <!--<version>2.4</version>-->
                 <!--<configuration>-->
                     <!--<createDependencyReducedPom>true</createDependencyReducedPom>-->
                 <!--</configuration>-->
@@ -272,7 +277,7 @@
                             <!--<transformers>-->
                                 <!--<transformer-->
                                         <!--implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-                                    <!--<mainClass>Main.Main</mainClass>-->
+                                    <!--<mainClass>com.coder.springbootdomecollection.SpringbootDomeCollectionApplication</mainClass>-->
                                 <!--</transformer>-->
                             <!--</transformers>-->
                         <!--</configuration>-->
@@ -290,7 +295,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Main.Main</mainClass>
+                            <mainClass>com.coder.springbootdomecollection.SpringbootDomeCollectionApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

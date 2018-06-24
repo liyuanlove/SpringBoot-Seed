@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-/**
- * 将此类的方法的返回值以json的形式返回
- */
-@Scope("prototype")
-@RequestMapping(value = "/user",produces = "application/json;charset=UTF-8")
+//@RestController
+///**
+// * 将此类的方法的返回值以json的形式返回
+// */
+//@Scope("prototype")
+//@RequestMapping(value = "/user",produces = "application/json;charset=UTF-8")
 public class UserController {
 
-    @Autowired
+//    @Autowired
     private UserService userService;
 
-    @Autowired
+//    @Autowired
     private MongoTemplate mongoTemplate;
 
     private JSONObject json = new JSONObject();

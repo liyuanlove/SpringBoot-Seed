@@ -6,3 +6,5 @@
 2、集成MongoDB。
 
 3、集成Zookeeper。
+
+4、集成Dubbo。
