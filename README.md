@@ -8,3 +8,5 @@
 3、集成Zookeeper。
 
 4、集成Dubbo。
+
+5、集成Nginx + Redis，反向代理dubbo消费者端，session共享
