@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
@@ -19,6 +20,7 @@ import java.sql.SQLException;
  * Created by 吴俊龙 on 6/13/2017.
  */
 @Configuration
+//@ComponentScan("com.coder.springbootdomecollection")
 public class DruidConfiguration {
 
     private Logger logger = LoggerFactory.getLogger(DruidConfiguration.class);
@@ -96,10 +98,10 @@ public class DruidConfiguration {
         return filterRegistrationBean;
     }
 
-    @Bean/*(destroyMethod = "close",initMethod = "init")*/
-
+    @Bean //(initMethod = "init", destroyMethod = "destroy")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource druidDataSource() {
-        /*@ConfigurationProperties(prefix = "spring.datasource")*/
+
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(dbUrl);
         datasource.setUsername(username);
