@@ -5,7 +5,8 @@ import org.apache.zookeeper.ZooKeeper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
+//@RequestMapping("/")
 public class ZookeeperController {
 
     @RequestMapping(value="/testZookeeper")

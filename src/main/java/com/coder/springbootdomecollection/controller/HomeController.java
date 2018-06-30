@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+//@Controller
 /**
  * 表示这是个控制器，但是这个类只能返回jsp，html等页面
  */
