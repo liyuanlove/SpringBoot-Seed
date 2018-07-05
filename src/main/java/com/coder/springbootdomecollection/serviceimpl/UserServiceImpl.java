@@ -1,5 +1,6 @@
 package com.coder.springbootdomecollection.serviceimpl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.coder.springbootdomecollection.mapper.UserMapper;
 import com.coder.springbootdomecollection.model.User;
 import com.coder.springbootdomecollection.repository.UserRepository;
@@ -7,12 +8,10 @@ import com.coder.springbootdomecollection.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
-@Service(value = "userService")
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired

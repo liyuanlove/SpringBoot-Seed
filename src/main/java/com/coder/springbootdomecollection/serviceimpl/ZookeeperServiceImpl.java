@@ -1,17 +1,16 @@
 package com.coder.springbootdomecollection.serviceimpl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.coder.springbootdomecollection.service.ZookeeperService;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
-import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 
-@Service("zooKeeper")
+@Service
 public class ZookeeperServiceImpl implements ZookeeperService {
 
     @Override
