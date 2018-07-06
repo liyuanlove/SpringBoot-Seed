@@ -1,4 +1,4 @@
-package com.coder.springbootdomecollection;
+package com.coder.springbootdomecollection.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

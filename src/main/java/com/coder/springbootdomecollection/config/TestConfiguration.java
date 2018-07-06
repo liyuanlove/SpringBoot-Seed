@@ -1,4 +1,4 @@
-package com.coder.springbootdomecollection;
+package com.coder.springbootdomecollection.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

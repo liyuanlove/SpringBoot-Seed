@@ -20,7 +20,7 @@ import java.sql.SQLOutput;
  */
 public class AopConfiguration {
 
-    @Pointcut("execution(* com.coder..*.*.*(..))")
+    @Pointcut("execution(* com.coder..serviceimpl.*.*(..))")
     public void executeService(){ }
 
     @Before("executeService()")
@@ -43,7 +43,7 @@ public class AopConfiguration {
         System.out.println("方法正常返回之后执行");
     }
 
-    @Around("execution(* com.coder.*.*.*.*(..))")
+    @Around("execution(* com.coder.*.serviceimpl.*.*(..))")
     public Object around(ProceedingJoinPoint pjp){
         System.out.println("环绕通知");
         System.out.println(pjp);

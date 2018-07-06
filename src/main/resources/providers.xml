@@ -10,8 +10,8 @@
     <!-- 服务提供方应用名，用于计算依赖关系 -->
     <dubbo:application name="dubbo-provider" owner="dubbo-provider"/>
     <!-- 定义 zookeeper 注册中心地址及协议 -->
-    <dubbo:registry id="zookeeper1" protocol="zookeeper" address="127.0.0.1:2181" client="zkclient" />
-    <dubbo:registry id="zookeeper2" protocol="zookeeper" address="127.0.0.1:2182" client="zkclient" />
+    <dubbo:registry id="zookeeper1" protocol="zookeeper" address="127.0.0.1:2180,127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183,127.0.0.1:2184" client="zkclient" />
+    <!--<dubbo:registry id="zookeeper2" protocol="zookeeper" address="127.0.0.1:2185" client="zkclient" />-->
     <!-- 定义 Dubbo 协议名称及使用的端口，dubbo 协议缺省端口为 20880，如果配置为 -1 或者没有配置 port，则会分配一个没有被占用的端口 -->
     <dubbo:protocol name="dubbo" port="-1"/>
     <!-- 声明需要暴露的服务接口 -->
