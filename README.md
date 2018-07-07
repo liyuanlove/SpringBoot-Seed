@@ -1,6 +1,6 @@
 # SpringBoot-Seed
 ## [1.博客（制作中）](http://wjlonger.github.com)
-##[2.网站（制作中）](http://wujunlong:10522)
+##[2.网站](http://wujunlong:10439)
 ## 使用SpringBoot集成各种组件作为种子项目，快速搭建SpringBoot应用。
 ### 1、集成Mybatis，使用Druid做数据源，数据库采用MySQL。
 ### 2、集成MongoDB。
