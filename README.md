@@ -10,3 +10,4 @@
 ### 6、集成Swagger（在Dubbo-Customer项目中）
 ### 7、将要集成Quartz，实现分布式任务调度
 ### 8、集成ActiveMQ
+### 9、集成SpringBoot-Mail(异步发送邮件)
