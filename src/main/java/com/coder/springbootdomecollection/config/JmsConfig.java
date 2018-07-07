@@ -1,5 +1,7 @@
 package com.coder.springbootdomecollection.config;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
@@ -13,6 +15,8 @@ import java.util.concurrent.Executors;
 @Configuration
 @EnableJms
 public class JmsConfig {
+    @Value("${spring.activemq.broker-url}")
+    private String brokerUrl;
 
     @Bean
     public JmsListenerContainerFactory<?> topicListenerFactory(ConnectionFactory connectionFactory) {
@@ -30,4 +34,10 @@ public class JmsConfig {
         return factory;
     }
 
+    @Bean
+    public ActiveMQConnectionFactory activeMQConnectionFactory() {
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(brokerUrl);
+        factory.setTrustAllPackages(true);
+        return factory;
+    }
 }

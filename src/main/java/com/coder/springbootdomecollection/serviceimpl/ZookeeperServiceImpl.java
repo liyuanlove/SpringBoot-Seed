@@ -10,6 +10,7 @@ import org.apache.zookeeper.data.Stat;
 
 import javax.validation.constraints.NotNull;
 
+@Service
 public class ZookeeperServiceImpl implements ZookeeperService {
 
     @Override
