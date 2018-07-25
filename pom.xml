@@ -202,10 +202,10 @@
             </plugin>
 
             <!-- springboot package 打开下面注释 如果install则把插件注释-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
 
         </plugins>
     </build>
