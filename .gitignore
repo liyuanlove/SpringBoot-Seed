@@ -23,3 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/out/
+out/
+src/main/java/com/coder/springbootdomecollection/enumeration/
+src/main/java/com/coder/springbootdomecollection/variable/
