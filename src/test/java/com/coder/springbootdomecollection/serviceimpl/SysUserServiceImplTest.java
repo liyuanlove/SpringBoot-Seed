@@ -21,11 +21,8 @@ public class SysUserServiceImplTest {
 
     @Test
     public void selectByPrimaryKey(){
-
         SysUser sysUser = sysUserService.selectByPrimaryKey(1);
-
         List<SysRole> roles = sysUser.getRoleList();
-
         for(SysRole role : roles){
             System.out.println(role.getRname() + ":");
             List<SysPermission> sysPermissions = role.getSysPermissionList();
@@ -33,8 +30,5 @@ public class SysUserServiceImplTest {
                 System.out.println(sysPermission.getName());
             }
         }
-
     }
-
-
 }

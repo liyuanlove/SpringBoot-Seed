@@ -1,11 +1,12 @@
 package com.coder.springbootdomecollection.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class SysUser implements Serializable {
 
-    private static final long serialVersionUID = -2779765297436060358L;
+    private static final long serialVersionUID = 5062460457521507872L;
 
     private Integer id;
 
@@ -16,6 +17,10 @@ public class SysUser implements Serializable {
     private String phone;
 
     private Boolean sex;
+
+    private Date gmtCreate;
+
+    private Date gmtModified;
 
     private List<SysRole> roleList;
 
@@ -65,5 +70,21 @@ public class SysUser implements Serializable {
 
     public void setSex(Boolean sex) {
         this.sex = sex;
+    }
+
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
+
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public Date getGmtModified() {
+        return gmtModified;
+    }
+
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
     }
 }

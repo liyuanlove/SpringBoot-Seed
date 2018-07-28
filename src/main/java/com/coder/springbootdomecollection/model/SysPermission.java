@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.model;
 
 public class SysPermission {
+
     private Integer id;
 
     private String name;

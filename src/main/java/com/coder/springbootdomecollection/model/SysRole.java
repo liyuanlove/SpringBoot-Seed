@@ -3,6 +3,7 @@ package com.coder.springbootdomecollection.model;
 import java.util.List;
 
 public class SysRole {
+
     private Integer rid;
 
     private String rname;

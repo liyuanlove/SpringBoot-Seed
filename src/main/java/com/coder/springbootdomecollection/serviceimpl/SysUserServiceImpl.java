@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.coder.springbootdomecollection.mapper.SysUserMapper;
 import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysUser;
+import com.coder.springbootdomecollection.repository.SysUserRepository;
 import com.coder.springbootdomecollection.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,9 +17,20 @@ public class SysUserServiceImpl implements SysUserService {
     @Autowired
     private SysUserMapper sysUserMapper;
 
+    @Autowired
+    private SysUserRepository sysUserRepository;
+
 
     @Override
     public SysUser selectByPrimaryKey(Integer id) {
-        return sysUserMapper.selectByPrimaryKey(id);
+        SysUser sysUser = sysUserRepository.findById(id);
+        if(sysUser == null){
+            sysUser = sysUserMapper.selectByPrimaryKey(id);
+            if(sysUser != null){
+                sysUserRepository.save(sysUser);
+            }
+            return sysUser;
+        }
+        return  sysUser;
     }
 }

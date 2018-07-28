@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Mail implements Serializable {
 
     private static final long serialVersionUID = -6444007016951537609L;
+
     private String to;
     private String subject;
     private String content;
