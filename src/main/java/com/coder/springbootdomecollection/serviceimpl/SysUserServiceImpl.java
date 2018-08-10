@@ -29,8 +29,19 @@ public class SysUserServiceImpl implements SysUserService {
             if(sysUser != null){
                 sysUserRepository.save(sysUser);
             }
-            return sysUser;
         }
         return  sysUser;
+    }
+
+    @Override
+    public SysUser selectByUserName(String userName) {
+        SysUser sysUser = sysUserRepository.findByName(userName);
+        if(sysUser == null){
+            sysUser = sysUserMapper.selectByUserName(userName);
+            if(sysUser != null){
+                sysUserRepository.save(sysUser);
+            }
+        }
+        return sysUser;
     }
 }

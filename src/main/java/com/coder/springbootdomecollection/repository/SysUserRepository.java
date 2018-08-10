@@ -11,5 +11,5 @@ public interface SysUserRepository extends MongoRepository<SysUser,String> {
 
     SysUser findById(Integer id);
 
-    List<SysUser> findByName(String name);
+    SysUser findByName(String name);
 }
