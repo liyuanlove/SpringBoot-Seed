@@ -8,6 +8,6 @@ import java.util.List;
 public interface SysUserService {
 
     SysUser selectByPrimaryKey(Integer id);
-    SysUser selectByUserName(String userName);
+    SysUser selectByUserName(String name);
 
 }

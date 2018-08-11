@@ -125,10 +125,10 @@
     inner join user_role u on sys_role.rid = u.rid and u.uid = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="selectByUserName" parameterType="java.lang.String" resultMap="com.coder.springbootdomecollection.mapper.SysRoleMapper.BaseResultMap">
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from sys_user
-    where name= #{name,jdbcType=VARCHAR}
+    WHERE name = #{name,jdbcType=VARCHAR}
   </select>
 </mapper>

@@ -1,7 +1,10 @@
 package com.coder.springbootdomecollection.model;
 
-public class SysPermission {
+import java.io.Serializable;
 
+public class SysPermission implements Serializable {
+
+    private static final long serialVersionUID = -7227270792179132899L;
     private Integer id;
 
     private String name;

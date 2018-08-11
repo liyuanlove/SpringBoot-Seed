@@ -34,10 +34,10 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUser selectByUserName(String userName) {
-        SysUser sysUser = sysUserRepository.findByName(userName);
+    public SysUser selectByUserName(String name) {
+        SysUser sysUser = sysUserRepository.findByName(name);
         if(sysUser == null){
-            sysUser = sysUserMapper.selectByUserName(userName);
+            sysUser = sysUserMapper.selectByUserName(name);
             if(sysUser != null){
                 sysUserRepository.save(sysUser);
             }
