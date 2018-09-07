@@ -15,6 +15,29 @@ public class DoubleColorBallSearch {
     }
 
 
+    public Integer getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(int pageIndex) {
+        pageIndex = pageIndex - 1;
+        if(pageIndex < 0) {
+            pageIndex = 1;
+        }
+        this.pageIndex = pageIndex;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        if(pageSize < 0){
+            pageSize = 20;
+        }
+        this.pageSize = pageSize;
+    }
+
     public String getOrderBy() {
         return orderBy;
     }

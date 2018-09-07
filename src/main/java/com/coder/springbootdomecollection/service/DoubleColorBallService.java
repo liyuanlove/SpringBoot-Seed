@@ -1,18 +1,19 @@
 package com.coder.springbootdomecollection.service;
 
+import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 
 import java.util.List;
 
 public interface DoubleColorBallService {
 
-    void insert(DoubleColorBall doubleColorBall);
+    int insert(DoubleColorBall doubleColorBall);
 
-    void insertSelective(DoubleColorBall doubleColorBall);
+    int insertSelective(DoubleColorBall doubleColorBall);
 
-    void update(DoubleColorBall doubleColorBall);
+    int update(DoubleColorBall doubleColorBall);
 
-    void updateSelective(DoubleColorBall doubleColorBall);
+    int updateSelective(DoubleColorBall doubleColorBall);
 
     DoubleColorBall selectById(Integer integer);
 
