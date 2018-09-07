@@ -1,6 +1,6 @@
 package com.coder.springbootdomecollection.model;
 
-public class DoubleColorBallSearch {
+public class DoubleColorBallSearch extends DoubleColorBall {
 
     private String orderBy;
     private String orderSequnce;

@@ -144,16 +144,15 @@
     </where>
   </update>
 
-  <select id="selectById" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
       <include refid="BaseColumn"></include>
     from
       doublecolorball
     where
       id = #{id,jdbcType=INTEGER}
-    <include refid="OrderBy"></include>
   </select>
-  <select id="listPage" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.doubleColorBallSearch">
+  <select id="listPage" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallSearch">
     select
       <include refid="BaseColumn"></include>
     from
