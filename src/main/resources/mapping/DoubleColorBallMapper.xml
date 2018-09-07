@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coder.springbootdomecollection.mapper.DoubleColorBallMapper" >
+  <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.DoubleColorBallKey" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="redball1" property="redball1" jdbcType="VARCHAR" />
+    <id column="redball2" property="redball2" jdbcType="VARCHAR" />
+    <id column="redball4" property="redball4" jdbcType="VARCHAR" />
+    <id column="redball3" property="redball3" jdbcType="VARCHAR" />
+    <id column="redball5" property="redball5" jdbcType="VARCHAR" />
+    <id column="redball6" property="redball6" jdbcType="VARCHAR" />
+    <id column="buleball" property="buleball" jdbcType="VARCHAR" />
+    <id column="createdate" property="createdate" jdbcType="DATE" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallKey" >
+    delete from doublecolorball
+    where id = #{id,jdbcType=INTEGER}
+      and redball1 = #{redball1,jdbcType=VARCHAR}
+      and redball2 = #{redball2,jdbcType=VARCHAR}
+      and redball4 = #{redball4,jdbcType=VARCHAR}
+      and redball3 = #{redball3,jdbcType=VARCHAR}
+      and redball5 = #{redball5,jdbcType=VARCHAR}
+      and redball6 = #{redball6,jdbcType=VARCHAR}
+      and buleball = #{buleball,jdbcType=VARCHAR}
+      and createdate = #{createdate,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallKey" >
+    insert into doublecolorball (id, redball1, redball2, 
+      redball4, redball3, redball5, 
+      redball6, buleball, createdate
+      )
+    values (#{id,jdbcType=INTEGER}, #{redball1,jdbcType=VARCHAR}, #{redball2,jdbcType=VARCHAR}, 
+      #{redball4,jdbcType=VARCHAR}, #{redball3,jdbcType=VARCHAR}, #{redball5,jdbcType=VARCHAR}, 
+      #{redball6,jdbcType=VARCHAR}, #{buleball,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallKey" >
+    insert into doublecolorball
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="redball1 != null" >
+        redball1,
+      </if>
+      <if test="redball2 != null" >
+        redball2,
+      </if>
+      <if test="redball4 != null" >
+        redball4,
+      </if>
+      <if test="redball3 != null" >
+        redball3,
+      </if>
+      <if test="redball5 != null" >
+        redball5,
+      </if>
+      <if test="redball6 != null" >
+        redball6,
+      </if>
+      <if test="buleball != null" >
+        buleball,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="redball1 != null" >
+        #{redball1,jdbcType=VARCHAR},
+      </if>
+      <if test="redball2 != null" >
+        #{redball2,jdbcType=VARCHAR},
+      </if>
+      <if test="redball4 != null" >
+        #{redball4,jdbcType=VARCHAR},
+      </if>
+      <if test="redball3 != null" >
+        #{redball3,jdbcType=VARCHAR},
+      </if>
+      <if test="redball5 != null" >
+        #{redball5,jdbcType=VARCHAR},
+      </if>
+      <if test="redball6 != null" >
+        #{redball6,jdbcType=VARCHAR},
+      </if>
+      <if test="buleball != null" >
+        #{buleball,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
