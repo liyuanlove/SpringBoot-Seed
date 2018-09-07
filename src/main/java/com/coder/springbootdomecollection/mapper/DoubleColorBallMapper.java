@@ -1,11 +1,11 @@
 package com.coder.springbootdomecollection.mapper;
 
-import com.coder.springbootdomecollection.model.DoubleColorBallKey;
+import com.coder.springbootdomecollection.model.DoubleColorBall;
 
 public interface DoubleColorBallMapper {
-    int deleteByPrimaryKey(DoubleColorBallKey key);
+    int deleteByPrimaryKey(DoubleColorBall key);
 
-    int insert(DoubleColorBallKey record);
+    int insert(DoubleColorBall record);
 
-    int insertSelective(DoubleColorBallKey record);
+    int insertSelective(DoubleColorBall record);
 }
