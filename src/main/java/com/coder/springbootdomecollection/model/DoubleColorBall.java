@@ -1,8 +1,12 @@
 package com.coder.springbootdomecollection.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DoubleColorBall {
+public class DoubleColorBall implements Serializable {
+
+    private static final long serialVersionUID = 6742160027060911886L;
+
     private Integer id;
 
     private Integer redball1;
