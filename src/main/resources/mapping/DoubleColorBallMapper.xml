@@ -30,11 +30,11 @@
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall" >
     insert into doublecolorball (id, redball1, redball2, 
-      redball4, redball3, redball5, 
+      redball3, redball4, redball5,
       redball6, blueball, createdate
       )
     values (#{id,jdbcType=INTEGER}, #{redball1,jdbcType=INTEGER}, #{redball2,jdbcType=INTEGER}, 
-      #{redball4,jdbcType=INTEGER}, #{redball3,jdbcType=INTEGER}, #{redball5,jdbcType=INTEGER}, 
+      #{redball3,jdbcType=INTEGER}, #{redball4,jdbcType=INTEGER}, #{redball5,jdbcType=INTEGER},
       #{redball6,jdbcType=INTEGER}, #{blueball,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}
       )
   </insert>
@@ -50,11 +50,11 @@
       <if test="redball2 != null" >
         redball2,
       </if>
-      <if test="redball4 != null" >
-        redball4,
-      </if>
       <if test="redball3 != null" >
         redball3,
+      </if>
+      <if test="redball4 != null" >
+        redball4,
       </if>
       <if test="redball5 != null" >
         redball5,
@@ -79,11 +79,11 @@
       <if test="redball2 != null" >
         #{redball2,jdbcType=INTEGER},
       </if>
-      <if test="redball4 != null" >
-        #{redball4,jdbcType=INTEGER},
-      </if>
       <if test="redball3 != null" >
         #{redball3,jdbcType=INTEGER},
+      </if>
+      <if test="redball4 != null" >
+        #{redball4,jdbcType=INTEGER},
       </if>
       <if test="redball5 != null" >
         #{redball5,jdbcType=INTEGER},
@@ -98,6 +98,29 @@
         #{createdate,jdbcType=DATE},
       </if>
     </trim>
+  </insert>
+  <insert id="insertToBatch" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into doublecolorball
+    (id,redball1,redball2,redball3,redball4,redball5,redball6,blueball,createdate)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      <if test="item != null">
+        (
+          #{item.id,jdbcType=INTEGER},
+          #{item.redball1,jdbcType=INTEGER},
+          #{item.redball2,jdbcType=INTEGER},
+          #{item.redball3,jdbcType=INTEGER},
+          #{item.redball4,jdbcType=INTEGER},
+          #{item.redball5,jdbcType=INTEGER},
+          #{item.redball6,jdbcType=INTEGER},
+          #{item.blueball,jdbcType=INTEGER},
+          #{item.createdate,jdbcType=DATE}
+        )
+      </if>
+    </foreach>
   </insert>
 
   <update id="update" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
@@ -162,7 +185,5 @@
     <include refid="OrderBy"></include>
     <include refid="Limit"></include>
   </select>
-
-
 
 </mapper>

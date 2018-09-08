@@ -11,6 +11,8 @@ public interface DoubleColorBallService {
 
     int insertSelective(DoubleColorBall doubleColorBall);
 
+    int insertToBatch(List<DoubleColorBall> doubleColorBalls);
+
     int update(DoubleColorBall doubleColorBall);
 
     int updateSelective(DoubleColorBall doubleColorBall);

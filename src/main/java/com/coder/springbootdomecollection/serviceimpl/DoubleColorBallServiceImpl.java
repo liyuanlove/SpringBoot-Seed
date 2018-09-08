@@ -4,6 +4,7 @@ import com.coder.springbootdomecollection.mapper.DoubleColorBallMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,15 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
     @Override
     public int insertSelective(DoubleColorBall doubleColorBall) {
         return doubleColorBallMapper.insertSelective(doubleColorBall);
+    }
+
+    @Override
+    public int insertToBatch(List<DoubleColorBall> doubleColorBalls) {
+        if(null != doubleColorBalls && doubleColorBalls.size() > 0){
+            return doubleColorBallMapper.insertToBatch(doubleColorBalls);
+        }
+        return 0;
+
     }
 
     @Override

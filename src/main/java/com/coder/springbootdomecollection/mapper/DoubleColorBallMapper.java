@@ -11,6 +11,8 @@ public interface DoubleColorBallMapper {
 
     int insertSelective(DoubleColorBall doubleColorBall);
 
+    int insertToBatch(List<DoubleColorBall> doubleColorBalls);
+
     int update(DoubleColorBall doubleColorBall);
 
     int updateSelective(DoubleColorBall doubleColorBall);

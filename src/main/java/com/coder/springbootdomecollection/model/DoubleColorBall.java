@@ -2,8 +2,23 @@ package com.coder.springbootdomecollection.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class DoubleColorBall implements Serializable {
+    public DoubleColorBall(){}
+
+    public DoubleColorBall(Integer id,Integer redball1,Integer redball2,Integer redball3,Integer redball4,Integer redball5,Integer redball6,Integer blueball,Date createdate){
+        this.id = id;
+        this.redball1 = redball1;
+        this.redball2 = redball2;
+        this.redball3 = redball3;
+        this.redball4 = redball4;
+        this.redball5 = redball5;
+        this.redball6 = redball6;
+        this.blueball = blueball;
+        this.createdate = createdate;
+    }
+
 
     private static final long serialVersionUID = 6742160027060911886L;
 
@@ -13,9 +28,9 @@ public class DoubleColorBall implements Serializable {
 
     private Integer redball2;
 
-    private Integer redball4;
-
     private Integer redball3;
+
+    private Integer redball4;
 
     private Integer redball5;
 
@@ -95,5 +110,31 @@ public class DoubleColorBall implements Serializable {
 
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DoubleColorBall)) {
+            return false;
+        }
+        DoubleColorBall that = (DoubleColorBall) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getRedball1(), that.getRedball1()) &&
+                Objects.equals(getRedball2(), that.getRedball2()) &&
+                Objects.equals(getRedball3(), that.getRedball3()) &&
+                Objects.equals(getRedball4(), that.getRedball4()) &&
+                Objects.equals(getRedball5(), that.getRedball5()) &&
+                Objects.equals(getRedball6(), that.getRedball6()) &&
+                Objects.equals(getBlueball(), that.getBlueball()) &&
+                Objects.equals(getCreatedate(), that.getCreatedate());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId(), getRedball1(), getRedball2(), getRedball3(), getRedball4(), getRedball5(), getRedball6(), getBlueball(), getCreatedate());
     }
 }
