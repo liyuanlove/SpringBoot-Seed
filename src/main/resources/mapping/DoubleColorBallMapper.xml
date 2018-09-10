@@ -27,16 +27,44 @@
       limit #{pageIndex,jdbcType=INTEGER} , #{pageSize,jdbcType=INTEGER}
     </if>
   </sql>
+  <sql id="Where_Case">
+    <where>
+      <if test="id != null" >
+        and #{id,jdbcType=INTEGER},
+      </if>
+      <if test="redball1 != null" >
+        and #{redball1,jdbcType=INTEGER},
+      </if>
+      <if test="redball2 != null" >
+        and #{redball2,jdbcType=INTEGER},
+      </if>
+      <if test="redball3 != null" >
+        and #{redball3,jdbcType=INTEGER},
+      </if>
+      <if test="redball4 != null" >
+        and #{redball4,jdbcType=INTEGER},
+      </if>
+      <if test="redball5 != null" >
+        and #{redball5,jdbcType=INTEGER},
+      </if>
+      <if test="redball6 != null" >
+        and #{redball6,jdbcType=INTEGER},
+      </if>
+      <if test="blueball != null" >
+        and #{blueball,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        and #{createdate,jdbcType=DATE},
+      </if>
+    </where>
+  </sql>
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall" >
-    insert into doublecolorball (id, redball1, redball2, 
-      redball3, redball4, redball5,
-      redball6, blueball, createdate
-      )
+    insert into doublecolorball
+      (id, redball1, redball2, redball3, redball4, redball5,redball6, blueball, createdate)
     values (#{id,jdbcType=INTEGER}, #{redball1,jdbcType=INTEGER}, #{redball2,jdbcType=INTEGER}, 
       #{redball3,jdbcType=INTEGER}, #{redball4,jdbcType=INTEGER}, #{redball5,jdbcType=INTEGER},
-      #{redball6,jdbcType=INTEGER}, #{blueball,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}
-      )
+      #{redball6,jdbcType=INTEGER}, #{blueball,jdbcType=INTEGER}, #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall" >
     insert into doublecolorball
@@ -104,21 +132,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey >
     insert into doublecolorball
-    (id,redball1,redball2,redball3,redball4,redball5,redball6,blueball,createdate)
+      (id,redball1,redball2,redball3,redball4,redball5,redball6,blueball,createdate)
     values
     <foreach collection="list" item="item" index="index" separator="," >
       <if test="item != null">
-        (
-          #{item.id,jdbcType=INTEGER},
-          #{item.redball1,jdbcType=INTEGER},
-          #{item.redball2,jdbcType=INTEGER},
-          #{item.redball3,jdbcType=INTEGER},
-          #{item.redball4,jdbcType=INTEGER},
-          #{item.redball5,jdbcType=INTEGER},
-          #{item.redball6,jdbcType=INTEGER},
-          #{item.blueball,jdbcType=INTEGER},
-          #{item.createdate,jdbcType=DATE}
-        )
+        (#{item.id,jdbcType=INTEGER},#{item.redball1,jdbcType=INTEGER},#{item.redball2,jdbcType=INTEGER},
+        #{item.redball3,jdbcType=INTEGER},#{item.redball4,jdbcType=INTEGER},#{item.redball5,jdbcType=INTEGER},
+        #{item.redball6,jdbcType=INTEGER},#{item.blueball,jdbcType=INTEGER},#{item.createdate,jdbcType=DATE})
       </if>
     </foreach>
   </insert>
@@ -160,6 +180,9 @@
       </if>
       <if test="blueball != null" >
         blueball = #{blueball,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=INTEGER},
       </if>
     </set>
     <where>
