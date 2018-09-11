@@ -3,7 +3,10 @@ package com.coder.springbootdomecollection.serviceimpl;
 import com.coder.springbootdomecollection.mapper.DoubleColorBallMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
+import com.coder.springbootdomecollection.model.User;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +54,11 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
     }
 
     @Override
-    public List<DoubleColorBall> listPage(DoubleColorBallSearch doubleColorBallSearch) {
-        return doubleColorBallMapper.listPage(doubleColorBallSearch);
+    public PageInfo<DoubleColorBall> listPage(int pageNum,int pageSize,DoubleColorBallSearch doubleColorBallSearch) {
+        //将参数传给这个方法就可以实现物理分页了，非常简单。
+        PageHelper.startPage(pageNum, pageSize);
+        List<DoubleColorBall> balls = doubleColorBallMapper.listPage(doubleColorBallSearch);
+        PageInfo result = new PageInfo(balls);
+        return result;
     }
 }

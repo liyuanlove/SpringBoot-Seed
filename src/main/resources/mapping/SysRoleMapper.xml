@@ -80,7 +80,7 @@
   </select>
   <select id="selectMenusByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap" parameterType="java.lang.Integer">
     select
-      <include refid="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap" />
+      <include refid="com.coder.springbootdomecollection.mapper.SysMenuMapper.Base_Column_List" />
     from
       sys_menu
     inner join

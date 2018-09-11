@@ -2,6 +2,7 @@ package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface DoubleColorBallService {
 
     DoubleColorBall selectById(Integer integer);
 
-    List<DoubleColorBall> listPage(DoubleColorBallSearch doubleColorBallSearch);
+    PageInfo<DoubleColorBall> listPage(int pageNum, int pageSize, DoubleColorBallSearch doubleColorBallSearch);
 
 }

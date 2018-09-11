@@ -3,6 +3,7 @@ package com.coder.springbootdomecollection.mapper;
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
 
 public interface DoubleColorBallOrderMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(DoubleColorBallOrder record);

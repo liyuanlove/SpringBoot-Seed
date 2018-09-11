@@ -23,11 +23,6 @@
       order by ${orderBy} ${orderSequnce}
     </if>
   </sql>
-  <sql id="Limit">
-    <if test="pageIndex != null and pageSize != null">
-      limit #{pageIndex,jdbcType=INTEGER} , #{pageSize,jdbcType=INTEGER}
-    </if>
-  </sql>
   <sql id="Where_Case">
     <where>
       <if test="id != null" >
@@ -204,10 +199,8 @@
       <include refid="BaseColumn"></include>
     from
       doublecolorball
-    where
-      id = #{id,jdbcType=INTEGER}
+    <include refid="Where_Case"></include>
     <include refid="OrderBy"></include>
-    <include refid="Limit"></include>
   </select>
 
 </mapper>
