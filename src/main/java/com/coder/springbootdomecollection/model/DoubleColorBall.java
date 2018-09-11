@@ -40,6 +40,8 @@ public class DoubleColorBall implements Serializable {
 
     private Date createdate;
 
+    private DoubleColorBallOrder doubleColorBallOrder;
+
     public Integer getId() {
         return id;
     }
@@ -112,6 +114,14 @@ public class DoubleColorBall implements Serializable {
         this.createdate = createdate;
     }
 
+    public DoubleColorBallOrder getDoubleColorBallOrder() {
+        return doubleColorBallOrder;
+    }
+
+    public void setDoubleColorBallOrder(DoubleColorBallOrder doubleColorBallOrder) {
+        this.doubleColorBallOrder = doubleColorBallOrder;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -134,7 +144,6 @@ public class DoubleColorBall implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getId(), getRedball1(), getRedball2(), getRedball3(), getRedball4(), getRedball5(), getRedball6(), getBlueball(), getCreatedate());
     }
 }

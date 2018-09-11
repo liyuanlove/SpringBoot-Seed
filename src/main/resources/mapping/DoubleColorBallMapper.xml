@@ -12,6 +12,7 @@
     <id column="redball6" property="redball6" jdbcType="INTEGER" />
     <id column="blueball" property="blueball" jdbcType="INTEGER" />
     <id column="createdate" property="createdate" jdbcType="DATE" />
+    <association column="id" property="doubleColorBallOrder" select="com.coder.springbootdomecollection.mapper.DoubleColorBallOrderMapper.selectByPrimaryKey" />
   </resultMap>
 
   <sql id="BaseColumn">

@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coder.springbootdomecollection.mapper.SysRoleMapper" >
+
   <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysRole" >
     <id column="rid" property="rid" jdbcType="INTEGER" />
     <result column="rname" property="rname" jdbcType="VARCHAR" />
-
     <association column="rid" select="selectPermissionByPrimaryKey" property="sysPermissionList" />
-
+    <association column="rid" select="selectMenusByPrimaryKey" property="sysMenuList" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     rid, rname
   </sql>
   <sql id="Sys_Permission_Base_Column_List" >
     sys_permission.id,sys_permission.name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from sys_role
-    where rid = #{rid,jdbcType=INTEGER}
-  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_role
     where rid = #{rid,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysRole" >
     insert into sys_role (rid, rname)
     values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR})
@@ -47,6 +44,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysRole" >
     update sys_role
     <set >
@@ -62,11 +60,35 @@
     where rid = #{rid,jdbcType=INTEGER}
   </update>
 
-
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_role
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
   <select id="selectPermissionByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysPermissionMapper.BaseResultMap" parameterType="java.lang.Integer">
     select
-    <include refid="Sys_Permission_Base_Column_List" />
-    from sys_permission
-    inner join role_permission on sys_permission.id = role_permission.pid and role_permission.rid = #{rid,jdbcType=INTEGER}
+      <include refid="Sys_Permission_Base_Column_List" />
+    from
+      sys_permission
+    inner join
+      role_permission
+    on
+      sys_permission.id = role_permission.pid
+    and
+      role_permission.rid = #{rid,jdbcType=INTEGER}
   </select>
+  <select id="selectMenusByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap" parameterType="java.lang.Integer">
+    select
+      <include refid="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap" />
+    from
+      sys_menu
+    inner join
+      role_menu
+    on
+      sys_menu.id = role_menu.menuid
+    and
+      role_menu.roleid = #{rid,jdbcType=INTEGER}
+  </select>
+
 </mapper>
