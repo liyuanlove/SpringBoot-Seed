@@ -23,7 +23,7 @@ public interface SysMenuService {
 
     List<SysMenu> selectAll();
 
-    PageInfo<SysMenu> selectAll(int pageIndex, int pageSize);
+    PageInfo<SysMenu> selectPage(int pageIndex, int pageSize);
 
     int save(SysMenu sysMenu);
 }

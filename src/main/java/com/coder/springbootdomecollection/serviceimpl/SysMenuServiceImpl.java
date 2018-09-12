@@ -57,7 +57,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     }
 
     @Override
-    public PageInfo<SysMenu> selectAll(int pageIndex, int pageSize) {
+    public PageInfo<SysMenu> selectPage(int pageIndex, int pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         List<SysMenu> sysMenus = sysMenuMapper.selectAll();
         return new PageInfo<>(sysMenus);

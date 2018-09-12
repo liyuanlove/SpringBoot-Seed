@@ -4,6 +4,8 @@ import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysRoleSearch;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 public interface SysRoleService {
 
     int deleteByPrimaryKey(Integer rid);
@@ -22,7 +24,9 @@ public interface SysRoleService {
 
     SysRole selectByPrimaryKey(Integer rid);
 
-    PageInfo<SysRole> selectByVo(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch);
+    List<SysRole> selectAll(SysRoleSearch sysRoleSearch);
+
+    PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch);
 
     SysRole selectByProperty(SysRole sysRole);
 

@@ -62,7 +62,12 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public PageInfo<SysRole> selectByVo(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch) {
+    public List<SysRole> selectAll(SysRoleSearch sysRoleSearch) {
+        return sysRoleMapper.selectByVo(sysRoleSearch);
+    }
+
+    @Override
+    public PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch) {
         PageHelper.startPage(pageIndex,pageSize);
         List<SysRole> sysRoles = sysRoleMapper.selectByVo(sysRoleSearch);
         return new PageInfo(sysRoles);

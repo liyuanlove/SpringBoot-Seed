@@ -56,8 +56,13 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
     }
 
     @Override
-    public PageInfo<DoubleColorBall> selectByVo(int pageNum, int pageSize, DoubleColorBallSearch doubleColorBallSearch) {
-        PageHelper.startPage(pageNum,pageSize);
+    public List<DoubleColorBall> selectAll(DoubleColorBallSearch doubleColorBallSearch) {
+        return doubleColorBallMapper.selectByVo(doubleColorBallSearch);
+    }
+
+    @Override
+    public PageInfo<DoubleColorBall> selectPage(int pageIndex, int pageSize, DoubleColorBallSearch doubleColorBallSearch) {
+        PageHelper.startPage(pageIndex,pageSize);
         List<DoubleColorBall> doubleColorBalls = doubleColorBallMapper.selectByVo(doubleColorBallSearch);
         return new PageInfo<>(doubleColorBalls);
     }

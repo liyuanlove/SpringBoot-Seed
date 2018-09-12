@@ -4,11 +4,15 @@ import com.coder.springbootdomecollection.model.SysPermission;
 import com.coder.springbootdomecollection.model.SysPermissionSearch;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 public interface SysPermissionService {
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    PageInfo<SysPermission> selectByVo(int pageIndex, int pageSize, SysPermissionSearch permissionSearch);
+    PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermissionSearch sysPermissionSearch);
+
+    List<SysPermission> selectAll(SysPermissionSearch sysPermissionSearch);
 
     SysPermission selectByProperty(SysPermission sysPermission);
 

@@ -39,7 +39,7 @@ public class DoubleColorBallQueue {
         DoubleColorBall doubleColorBall = null;
         try {
             doubleColorBall = (DoubleColorBall) message.getObject();
-            doubleColorBallService.update(doubleColorBall);
+            doubleColorBallService.save(doubleColorBall);
         } catch (JMSException e) {
             e.printStackTrace();
             return "insert fail";

@@ -35,7 +35,12 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public PageInfo<SysUser> selectByVo(int pageIndex, int pageSize, SysUserSearch sysUserSearch) {
+    public List<SysUser> selectAll(SysUserSearch sysUserSearch) {
+        return sysUserMapper.selectByVo(sysUserSearch);
+    }
+
+    @Override
+    public PageInfo<SysUser> selectPage(int pageIndex, int pageSize, SysUserSearch sysUserSearch) {
         PageHelper.startPage(pageIndex, pageSize);
         List<SysUser> sysUsers = sysUserMapper.selectByVo(sysUserSearch);
         return new PageInfo(sysUsers);

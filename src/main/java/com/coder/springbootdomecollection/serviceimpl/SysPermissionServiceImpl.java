@@ -23,10 +23,15 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     }
 
     @Override
-    public PageInfo<SysPermission> selectByVo(int pageIndex, int pageSize, SysPermissionSearch sysPermissionSearch) {
+    public PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermissionSearch sysPermissionSearch) {
         PageHelper.startPage(pageIndex,pageSize);
         List<SysPermission> sysPermissions = sysPermissionMapper.selectByVo(sysPermissionSearch);
         return new PageInfo<>(sysPermissions);
+    }
+
+    @Override
+    public List<SysPermission> selectAll(SysPermissionSearch sysPermissionSearch) {
+        return sysPermissionMapper.selectByVo(sysPermissionSearch);
     }
 
     @Override
