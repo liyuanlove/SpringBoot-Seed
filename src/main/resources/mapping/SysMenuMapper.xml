@@ -114,6 +114,13 @@
     from sys_menu
     where pid = #{id,jdbcType=INTEGER}
   </select>
-
+  <select id="list" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List"></include>
+    from
+      sys_menu
+    where
+      pid = 0;
+  </select>
 
 </mapper>
