@@ -1,6 +1,6 @@
 package com.coder.springbootdomecollection.model;
 
-public class SysUserSearch extends SysUser{
+public class SysRoleSearch extends SysRole{
 
     private String orderBy;
 

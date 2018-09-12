@@ -9,15 +9,17 @@ public interface SysMenuMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(SysMenu record);
+    int deleteByProperty(SysMenu sysMenu);
 
-    int insertSelective(SysMenu record);
+    int insert(SysMenu sysMenu);
+
+    int insertSelective(SysMenu sysMenu);
+
+    int updateByPrimaryKeySelective(SysMenu sysMenu);
+
+    int updateByPrimaryKey(SysMenu sysMenu);
 
     SysMenu selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(SysMenu record);
-
-    int updateByPrimaryKey(SysMenu record);
-
-    List<SysMenu> list();
+    List<SysMenu> selectAll();
 }

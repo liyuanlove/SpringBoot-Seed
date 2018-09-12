@@ -1,8 +1,6 @@
 package com.coder.springbootdomecollection.mapper;
-
-import com.coder.springbootdomecollection.model.SysMenu;
-import com.coder.springbootdomecollection.model.SysPermission;
 import com.coder.springbootdomecollection.model.SysRole;
+import com.coder.springbootdomecollection.model.SysRoleSearch;
 
 import java.util.List;
 
@@ -10,17 +8,20 @@ public interface SysRoleMapper {
 
     int deleteByPrimaryKey(Integer rid);
 
-    int insert(SysRole record);
+    int deleteByProperty(SysRole sysRole);
 
-    int insertSelective(SysRole record);
+    int insert(SysRole sysRole);
+
+    int insertSelective(SysRole sysRole);
+
+    int updateByPrimaryKeySelective(SysRole sysRole);
+
+    int updateByPrimaryKey(SysRole sysRole);
 
     SysRole selectByPrimaryKey(Integer rid);
 
-    int updateByPrimaryKeySelective(SysRole record);
+    List<SysRole> selectByVo(SysRoleSearch sysRoleSearch);
 
-    int updateByPrimaryKey(SysRole record);
+    SysRole selectByProperty(SysRole sysRole);
 
-    List<SysPermission> selectPermissionByPrimaryKey(Integer id);
-
-    List<SysMenu> selectMenusByPrimaryKey(Integer id);
 }

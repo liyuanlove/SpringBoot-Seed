@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.coder.springbootdomecollection.mapper.SysUserMapper">
 
-  <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysUser">
+    <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -13,127 +13,186 @@
     <association column="id" property="roleList" select="selectRoleByPrimaryKey" />
   </resultMap>
 
-  <sql id="Base_Column_List">
-    id, name, password, phone, sex, gmt_create, gmt_modified
-  </sql>
-  <sql id="Sys_Role_Base_Column_List">
-    sys_role.rid,sys_role.rname
-  </sql>
+    <sql id="Base_Column_List">
+        id, name, password, phone, sex, gmt_create, gmt_modified</sql>
+    <sql id="Sys_Role_Base_Column_List">
+        sys_role.rid,sys_role.rname
+    </sql>
+    <sql id="OrderBy">
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy} ${orderSequnce}
+        </if>
+    </sql>
+    <sql id="WhereCase">
+      <where>
+        <if test="id != null">
+          and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="name != null">
+          and name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+          and password = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="phone != null">
+          and phone = #{phone,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+          and sex = #{sex,jdbcType=BIT}
+        </if>
+        <if test="gmtCreate != null">
+          and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="gmtModified != null">
+          and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+        </if>
+      </where>
+    </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-      <include refid="Base_Column_List" />
-    from
-      sys_user
-    where
-      id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sys_user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysUser">
-    insert into sys_user (id, name, password,
-      phone, sex, gmt_create,
-      gmt_modified)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP},
-      #{gmtModified,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysUser">
-    insert into sys_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="sex != null">
-        sex,
-      </if>
-      <if test="gmtCreate != null">
-        gmt_create,
-      </if>
-      <if test="gmtModified != null">
-        gmt_modified,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=BIT},
-      </if>
-      <if test="gmtCreate != null">
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null">
-        #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysUser">
-    update sys_user
-    <set>
-      <if test="name != null">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      select
+        <include refid="Base_Column_List" />
+      from
+        sys_user
+      where
+        id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysUserSearch">
+      select
+        <include refid="Base_Column_List" />
+      from
+        sys_user
+      <include refid="WhereCase"></include>
+      <include refid="OrderBy"></include>
+    </select>
+    <select id="selectByProperty" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      select
+        <include refid="Base_Column_List" />
+      from
+        sys_user
+      <include refid="WhereCase"></include>
+    </select>
+    <select id="selectRoleByPrimaryKey" parameterType="java.lang.Integer" resultMap="com.coder.springbootdomecollection.mapper.SysRoleMapper.BaseResultMap">
+      select
+        <include refid="Sys_Role_Base_Column_List" />
+      from
+        sys_role
+      inner join
+        user_role u
+      on
+        sys_role.rid = u.rid
+      and
+        u.uid = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+      delete from
+        sys_user
+      where
+        id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByVo" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      delete from
+        sys_user
+      <include refid="WhereCase"></include>
+    </delete>
+
+    <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      insert into
+        sys_user (id, name, password,phone, sex, gmt_create,gmt_modified)
+      values
+        (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      insert into
+        sys_user
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+          id,
+        </if>
+        <if test="name != null">
+          name,
+        </if>
+        <if test="password != null">
+          password,
+        </if>
+        <if test="phone != null">
+          phone,
+        </if>
+        <if test="sex != null">
+          sex,
+        </if>
+        <if test="gmtCreate != null">
+          gmt_create,
+        </if>
+        <if test="gmtModified != null">
+          gmt_modified,
+        </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+          #{id,jdbcType=INTEGER},
+        </if>
+        <if test="name != null">
+          #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+          #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null">
+          #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null">
+          #{sex,jdbcType=BIT},
+        </if>
+        <if test="gmtCreate != null">
+          #{gmtCreate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="gmtModified != null">
+          #{gmtModified,jdbcType=TIMESTAMP},
+        </if>
+      </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      update
+        sys_user
+      <set>
+        <if test="name != null">
+          name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+          password = #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null">
+          phone = #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null">
+          sex = #{sex,jdbcType=BIT},
+        </if>
+        <if test="gmtCreate != null">
+          gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="gmtModified != null">
+          gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where
+        id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      update
+        sys_user
+      set
         name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
         sex = #{sex,jdbcType=BIT},
-      </if>
-      <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null">
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.SysUser">
-    update sys_user
-    set name = #{name,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=BIT},
-      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectRoleByPrimaryKey" parameterType="java.lang.Integer" resultMap="com.coder.springbootdomecollection.mapper.SysRoleMapper.BaseResultMap">
-    select
-    <include refid="Sys_Role_Base_Column_List" />
-    from sys_role
-    inner join user_role u on sys_role.rid = u.rid and u.uid = #{id,jdbcType=INTEGER}
-  </select>
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      where
+        id = #{id,jdbcType=INTEGER}
+    </update>
 
-  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from sys_user
-    WHERE name = #{name,jdbcType=VARCHAR}
-  </select>
+
 </mapper>

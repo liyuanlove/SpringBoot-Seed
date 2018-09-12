@@ -15,20 +15,55 @@
   <sql id="Base_Column_List" >
     id, name, icon, pid, url, order
   </sql>
-
+  <sql id="OrderBy">
+    <if test="orderBy != null and orderBy != ''">
+      order by ${orderBy} ${orderSequnce}
+    </if>
+  </sql>
+  <sql id="WhereCase">
+    <where>
+      <if test="id != null" >
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="icon != null" >
+        and icon = #{icon,jdbcType=VARCHAR}
+      </if>
+      <if test="pid != null" >
+        and pid = #{pid,jdbcType=INTEGER}
+      </if>
+      <if test="url != null" >
+        and url = #{url,jdbcType=VARCHAR}
+      </if>
+      <if test="order != null" >
+        and order = #{order,jdbcType=INTEGER}
+      </if>
+    </where>
+  </sql>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from sys_menu
-    where id = #{id,jdbcType=INTEGER}
+    delete from
+      sys_menu
+    where
+      id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByProperty" parameterType="com.coder.springbootdomecollection.model.SysMenu" >
+    delete from
+      sys_menu
+    <include refid="WhereCase"></include>
   </delete>
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysMenu" >
-    insert into sys_menu (id, name, icon,pid, url, order)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
-      #{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER})
+    insert into
+      sys_menu (id, name, icon,pid, url, order)
+    values
+      (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},#{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysMenu" >
-    insert into sys_menu
+    insert into
+      sys_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -104,23 +139,29 @@
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
-    <include refid="Base_Column_List" />
-    from sys_menu
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select
-    <include refid="Base_Column_List" />
-    from sys_menu
-    where pid = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="list" resultMap="BaseResultMap">
-    select
-      <include refid="Base_Column_List"></include>
+      <include refid="Base_Column_List" />
     from
       sys_menu
     where
-      pid = 0;
+      id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    sys_menu
+    where
+    pid = 0;
+  </select>
+
+  <!-- 级联查询 -->
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+      <include refid="Base_Column_List" />
+    from
+      sys_menu
+    where
+      pid = #{id,jdbcType=INTEGER}
   </select>
 
 </mapper>

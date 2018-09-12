@@ -1,29 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coder.springbootdomecollection.mapper.SysPermissionMapper" >
+
   <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysPermission" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, name
   </sql>
+  <sql id="OrderBy">
+    <if test="orderBy != null and orderBy != ''">
+      order by ${orderBy} ${orderSequnce}
+    </if>
+  </sql>
+  <sql id="WhereCase">
+    <where>
+      <if test="id != null" >
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null" >
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
-    from sys_permission
-    where id = #{id,jdbcType=INTEGER}
+      <include refid="Base_Column_List" />
+    from
+      sys_permission
+    where
+      id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermissionSearch" >
+    select
+      <include refid="Base_Column_List" />
+    from
+      sys_permission
+    <include refid="WhereCase"></include>
+    <include refid="OrderBy"></include>
+  </select>
+  <select id="selectByProperty" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
+    select
+      <include refid="Base_Column_List" />
+    from
+      sys_permission
+    <include refid="WhereCase"></include>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from sys_permission
-    where id = #{id,jdbcType=INTEGER}
+    delete from
+      sys_permission
+    where
+      id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByProperty" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
+    delete from
+      sys_permission
+    <include refid="WhereCase"></include>
+  </delete>
+
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
-    insert into sys_permission (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into
+      sys_permission (id, name)
+    values
+      (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
-    insert into sys_permission
+    insert into
+      sys_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -41,18 +88,25 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
-    update sys_permission
-    <set >
+    update
+      sys_permission
+    <set>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR}
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where
+      id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
-    update sys_permission
-    set name = #{name,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update
+      sys_permission
+    set
+      name = #{name,jdbcType=VARCHAR}
+    where
+      id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

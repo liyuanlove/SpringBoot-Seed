@@ -15,18 +15,46 @@
   <sql id="Sys_Permission_Base_Column_List" >
     sys_permission.id,sys_permission.name
   </sql>
+  <sql id="Sys_Menu_Base_Column_List" >
+    sys_menu.id, sys_menu.name, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.order
+  </sql>
+  <sql id="WhereCase">
+    <where>
+      <if test="rid != null" >
+        and rid = #{rid,jdbcType=INTEGER}
+      </if>
+      <if test="rname != null" >
+        and rname = #{rname,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <sql id="OrderBy">
+    <if test="orderBy != null and orderBy != ''">
+      order by ${orderBy} ${orderSequnce}
+    </if>
+  </sql>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from sys_role
-    where rid = #{rid,jdbcType=INTEGER}
+    delete from
+      sys_role
+    where
+      rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByProperty" parameterType="com.coder.springbootdomecollection.model.SysRole" >
+    delete from
+      sys_role
+    <include refid="WhereCase"></include>
   </delete>
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysRole" >
-    insert into sys_role (rid, rname)
-    values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR})
+    insert into
+      sys_role (rid, rname)
+    values
+      (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysRole" >
-    insert into sys_role
+    insert into
+      sys_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
         rid,
@@ -46,26 +74,50 @@
   </insert>
 
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysRole" >
-    update sys_role
-    <set >
+    update
+      sys_role
+    <set>
       <if test="rname != null" >
-        rname = #{rname,jdbcType=VARCHAR},
+        rname = #{rname,jdbcType=VARCHAR}
       </if>
     </set>
-    where rid = #{rid,jdbcType=INTEGER}
+    where
+      rid = #{rid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.SysRole" >
-    update sys_role
-    set rname = #{rname,jdbcType=VARCHAR}
-    where rid = #{rid,jdbcType=INTEGER}
+    update
+      sys_role
+    set
+      rname = #{rname,jdbcType=VARCHAR}
+    where
+      rid = #{rid,jdbcType=INTEGER}
   </update>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
-    <include refid="Base_Column_List" />
-    from sys_role
-    where rid = #{rid,jdbcType=INTEGER}
+      <include refid="Base_Column_List" />
+    from
+      sys_role
+    where
+      rid = #{rid,jdbcType=INTEGER}
   </select>
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysRoleSearch">
+    select
+      <include refid="Base_Column_List"></include>
+    from
+      sys_role
+    <include refid="WhereCase"></include>
+    <include refid="OrderBy"></include>
+  </select>
+  <select id="selectByProperty" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysRole">
+    select
+      <include refid="Base_Column_List"></include>
+    from
+      sys_role
+    <include refid="WhereCase"></include>
+  </select>
+
+  <!-- 级联查询 s -->
   <select id="selectPermissionByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysPermissionMapper.BaseResultMap" parameterType="java.lang.Integer">
     select
       <include refid="Sys_Permission_Base_Column_List" />
@@ -80,7 +132,7 @@
   </select>
   <select id="selectMenusByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap" parameterType="java.lang.Integer">
     select
-      <include refid="com.coder.springbootdomecollection.mapper.SysMenuMapper.Base_Column_List" />
+      <include refid="Sys_Menu_Base_Column_List" />
     from
       sys_menu
     inner join
@@ -90,5 +142,6 @@
     and
       role_menu.roleid = #{rid,jdbcType=INTEGER}
   </select>
+  <!-- 级联查询 e -->
 
 </mapper>

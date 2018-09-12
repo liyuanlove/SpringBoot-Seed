@@ -1,20 +1,23 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.SysUser;
+import com.coder.springbootdomecollection.model.SysUserSearch;
+
+import java.util.List;
 
 public interface SysUserMapper {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(SysUser record);
-
-    int insertSelective(SysUser record);
-
     SysUser selectByPrimaryKey(Integer id);
+    List<SysUser> selectByVo(SysUserSearch sysUserSearch);
+    SysUser selectByProperty(SysUser sysUser);
 
-    int updateByPrimaryKeySelective(SysUser record);
+    int deleteByPrimaryKey(Integer id);
+    int deleteByVo(SysUser sysUser);
 
-    int updateByPrimaryKey(SysUser record);
+    int insert(SysUser sysUser);
+    int insertSelective(SysUser sysUser);
 
-    SysUser selectByUserName(String name);
+    int updateByPrimaryKeySelective(SysUser sysUser);
+    int updateByPrimaryKey(SysUser sysUser);
+
 }

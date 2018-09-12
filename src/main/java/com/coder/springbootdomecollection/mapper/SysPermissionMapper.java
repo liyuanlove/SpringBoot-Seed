@@ -1,17 +1,27 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.SysPermission;
+import com.coder.springbootdomecollection.model.SysPermissionSearch;
+
+import java.util.List;
 
 public interface SysPermissionMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(SysPermission record);
-
-    int insertSelective(SysPermission record);
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(SysPermission record);
+    List<SysPermission> selectByVo(SysPermissionSearch permissionSearch);
 
-    int updateByPrimaryKey(SysPermission record);
+    SysPermission selectByProperty(SysPermission sysPermission);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int deleteByProperty(SysPermission sysPermission);
+
+    int insert(SysPermission sysPermission);
+
+    int insertSelective(SysPermission sysPermission);
+
+    int updateByPrimaryKeySelective(SysPermission sysPermission);
+
+    int updateByPrimaryKey(SysPermission sysPermission);
 }

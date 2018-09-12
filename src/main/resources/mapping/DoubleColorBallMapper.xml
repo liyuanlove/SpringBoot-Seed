@@ -23,47 +23,49 @@
       order by ${orderBy} ${orderSequnce}
     </if>
   </sql>
-  <sql id="Where_Case">
+  <sql id="WhereCase">
     <where>
       <if test="id != null" >
-        and #{id,jdbcType=INTEGER},
+        and #{id,jdbcType=INTEGER}
       </if>
       <if test="redball1 != null" >
-        and #{redball1,jdbcType=INTEGER},
+        and #{redball1,jdbcType=INTEGER}
       </if>
       <if test="redball2 != null" >
-        and #{redball2,jdbcType=INTEGER},
+        and #{redball2,jdbcType=INTEGER}
       </if>
       <if test="redball3 != null" >
-        and #{redball3,jdbcType=INTEGER},
+        and #{redball3,jdbcType=INTEGER}
       </if>
       <if test="redball4 != null" >
-        and #{redball4,jdbcType=INTEGER},
+        and #{redball4,jdbcType=INTEGER}
       </if>
       <if test="redball5 != null" >
-        and #{redball5,jdbcType=INTEGER},
+        and #{redball5,jdbcType=INTEGER}
       </if>
       <if test="redball6 != null" >
-        and #{redball6,jdbcType=INTEGER},
+        and #{redball6,jdbcType=INTEGER}
       </if>
       <if test="blueball != null" >
-        and #{blueball,jdbcType=INTEGER},
+        and #{blueball,jdbcType=INTEGER}
       </if>
       <if test="createdate != null" >
-        and #{createdate,jdbcType=DATE},
+        and #{createdate,jdbcType=DATE}
       </if>
     </where>
   </sql>
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall" >
-    insert into doublecolorball
-      (id, redball1, redball2, redball3, redball4, redball5,redball6, blueball, createdate)
-    values (#{id,jdbcType=INTEGER}, #{redball1,jdbcType=INTEGER}, #{redball2,jdbcType=INTEGER}, 
+    insert into
+      doublecolorball (id, redball1, redball2, redball3, redball4, redball5,redball6, blueball, createdate)
+    values
+      (#{id,jdbcType=INTEGER}, #{redball1,jdbcType=INTEGER}, #{redball2,jdbcType=INTEGER},
       #{redball3,jdbcType=INTEGER}, #{redball4,jdbcType=INTEGER}, #{redball5,jdbcType=INTEGER},
       #{redball6,jdbcType=INTEGER}, #{blueball,jdbcType=INTEGER}, #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall" >
-    insert into doublecolorball
+    insert into
+      doublecolorball
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -127,8 +129,8 @@
     <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey >
-    insert into doublecolorball
-      (id,redball1,redball2,redball3,redball4,redball5,redball6,blueball,createdate)
+    insert into
+      doublecolorball (id,redball1,redball2,redball3,redball4,redball5,redball6,blueball,createdate)
     values
     <foreach collection="list" item="item" index="index" separator="," >
       <if test="item != null">
@@ -139,7 +141,7 @@
     </foreach>
   </insert>
 
-  <update id="update" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
+  <update id="updateByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
     update
       doublecolorball
     set
@@ -149,12 +151,13 @@
       redball4 = #{redball4,jdbcType=INTEGER},
       redball5 = #{redball5,jdbcType=INTEGER},
       redball6 = #{redball6,jdbcType=INTEGER},
-      blueball = #{blueball,jdbcType=INTEGER},
+      blueball = #{blueball,jdbcType=INTEGER}
     where
       id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateSelective" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
-    update doublecolorball
+  <update id="updateSelectiveByPrimaryKey" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
+    update
+      doublecolorball
     <set>
       <if test="redball1 != null" >
         redball1 = #{redball1,jdbcType=INTEGER},
@@ -186,7 +189,7 @@
     </where>
   </update>
 
-  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
       <include refid="BaseColumn"></include>
     from
@@ -194,12 +197,19 @@
     where
       id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="listPage" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallSearch">
+  <select id="selectByProperty" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
     select
       <include refid="BaseColumn"></include>
     from
       doublecolorball
-    <include refid="Where_Case"></include>
+    <include refid="WhereCase"></include>
+  </select>
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallSearch">
+    select
+      <include refid="BaseColumn"></include>
+    from
+      doublecolorball
+    <include refid="WhereCase"></include>
     <include refid="OrderBy"></include>
   </select>
 

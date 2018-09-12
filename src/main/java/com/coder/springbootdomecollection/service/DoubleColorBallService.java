@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
+import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.github.pagehelper.PageInfo;
 
@@ -14,12 +15,16 @@ public interface DoubleColorBallService {
 
     int insertToBatch(List<DoubleColorBall> doubleColorBalls);
 
-    int update(DoubleColorBall doubleColorBall);
+    int updateByPrimaryKey(DoubleColorBall doubleColorBall);
 
-    int updateSelective(DoubleColorBall doubleColorBall);
+    int updateSelectiveByPrimaryKey(DoubleColorBall doubleColorBall);
 
-    DoubleColorBall selectById(Integer integer);
+    DoubleColorBall selectByPrimaryKey(Integer id);
 
-    PageInfo<DoubleColorBall> listPage(int pageNum, int pageSize, DoubleColorBallSearch doubleColorBallSearch);
+    DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall);
+
+    PageInfo<DoubleColorBall> selectByVo(int pageNum, int pageSize, DoubleColorBallSearch doubleColorBallSearch);
+
+    int save(DoubleColorBall doubleColorBall);
 
 }

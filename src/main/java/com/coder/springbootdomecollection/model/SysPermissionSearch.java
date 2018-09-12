@@ -1,6 +1,6 @@
 package com.coder.springbootdomecollection.model;
 
-public class SysUserSearch extends SysUser{
+public class SysPermissionSearch extends SysPermission {
 
     private String orderBy;
 

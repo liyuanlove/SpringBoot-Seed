@@ -30,27 +30,21 @@ public class AopConfiguration {
     public void executeService(){ }
 
     @Pointcut("execution(* com.coder..model.*Search.setOrderBy(String))")
-    public void executeModelSearchOrder(){ }
-
-    @Pointcut("execution(* com.coder..model.*Search.setOrderSequnce(String))")
-    public void executeModelSearchSequnce(){ }
+    public void executeModelSearch(){ }
 
     /**
      * 在切入点之前
      * @param jp
      */
-    @Before("executeModelSearchOrder()")
+    @Before("executeModelSearch()")
     public void beforeModelSearchOrder(JoinPoint jp){
-        for (int i = 0; i < jp.getArgs().length; i++) {
-            String val = String.valueOf(jp.getArgs()[i]);
-            jp.getArgs()[i] = StringUtils.toSafeDataBaseString(val);
-        }
-    }
-    @Before("executeModelSearchSequnce()")
-    public void beforeModelSearchSequnce(JoinPoint jp){
-        for (int i = 0; i < jp.getArgs().length; i++) {
-            String val = String.valueOf(jp.getArgs()[i]);
-            jp.getArgs()[i] = StringUtils.toSafeDataBaseString(val);
+        if(jp != null){
+            for(Object obj:jp.getArgs()){
+                if(obj instanceof String){
+                    String val = String.valueOf(obj);
+                    obj = StringUtils.toSafeDataBaseString(val);
+                }
+            }
         }
     }
 

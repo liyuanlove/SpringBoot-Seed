@@ -13,11 +13,13 @@ public interface DoubleColorBallMapper {
 
     int insertToBatch(List<DoubleColorBall> doubleColorBalls);
 
-    int update(DoubleColorBall doubleColorBall);
+    int updateByPrimaryKey(DoubleColorBall doubleColorBall);
 
-    int updateSelective(DoubleColorBall doubleColorBall);
+    int updateSelectiveByPrimaryKey(DoubleColorBall doubleColorBall);
 
-    DoubleColorBall selectById(Integer integer);
+    DoubleColorBall selectByPrimaryKey(Integer integer);
 
-    List<DoubleColorBall> listPage(DoubleColorBallSearch doubleColorBallSearch);
+    DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall);
+
+    List<DoubleColorBall> selectByVo(DoubleColorBallSearch doubleColorBallSearch);
 }

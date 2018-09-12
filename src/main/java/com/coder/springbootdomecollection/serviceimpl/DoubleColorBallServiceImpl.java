@@ -3,11 +3,9 @@ package com.coder.springbootdomecollection.serviceimpl;
 import com.coder.springbootdomecollection.mapper.DoubleColorBallMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
-import com.coder.springbootdomecollection.model.User;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,30 +33,41 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
             return doubleColorBallMapper.insertToBatch(doubleColorBalls);
         }
         return 0;
-
     }
 
     @Override
-    public int update(DoubleColorBall doubleColorBall) {
-        return doubleColorBallMapper.update(doubleColorBall);
+    public int updateByPrimaryKey(DoubleColorBall doubleColorBall) {
+        return doubleColorBallMapper.updateByPrimaryKey(doubleColorBall);
     }
 
     @Override
-    public int updateSelective(DoubleColorBall doubleColorBall) {
-        return doubleColorBallMapper.updateSelective(doubleColorBall);
+    public int updateSelectiveByPrimaryKey(DoubleColorBall doubleColorBall) {
+        return doubleColorBallMapper.updateSelectiveByPrimaryKey(doubleColorBall);
     }
 
     @Override
-    public DoubleColorBall selectById(Integer integer) {
-        return doubleColorBallMapper.selectById(integer);
+    public DoubleColorBall selectByPrimaryKey(Integer id) {
+        return doubleColorBallMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public PageInfo<DoubleColorBall> listPage(int pageNum,int pageSize,DoubleColorBallSearch doubleColorBallSearch) {
-        //将参数传给这个方法就可以实现物理分页了，非常简单。
-        PageHelper.startPage(pageNum, pageSize);
-        List<DoubleColorBall> balls = doubleColorBallMapper.listPage(doubleColorBallSearch);
-        PageInfo result = new PageInfo(balls);
-        return result;
+    public DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall) {
+        return doubleColorBallMapper.selectByProperty(doubleColorBall);
+    }
+
+    @Override
+    public PageInfo<DoubleColorBall> selectByVo(int pageNum, int pageSize, DoubleColorBallSearch doubleColorBallSearch) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<DoubleColorBall> doubleColorBalls = doubleColorBallMapper.selectByVo(doubleColorBallSearch);
+        return new PageInfo<>(doubleColorBalls);
+    }
+
+    @Override
+    public int save(DoubleColorBall doubleColorBall) {
+        DoubleColorBall temp = doubleColorBallMapper.selectByPrimaryKey(doubleColorBall.getId());
+        if(temp == null){
+            return insert(doubleColorBall);
+        }
+        return updateSelectiveByPrimaryKey(doubleColorBall);
     }
 }
