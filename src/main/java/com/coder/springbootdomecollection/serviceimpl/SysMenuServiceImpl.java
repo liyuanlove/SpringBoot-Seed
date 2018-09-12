@@ -65,6 +65,9 @@ public class SysMenuServiceImpl implements SysMenuService {
 
     @Override
     public int save(SysMenu sysMenu) {
+        if(sysMenu == null){
+            return 0;
+        }
         SysMenu temp = sysMenuMapper.selectByPrimaryKey(sysMenu.getId());
         if(temp == null){
             return sysMenuMapper.insert(sysMenu);

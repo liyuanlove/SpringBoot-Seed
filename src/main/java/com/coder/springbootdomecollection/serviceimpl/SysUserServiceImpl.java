@@ -97,6 +97,9 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public int save(SysUser sysUser) {
+        if(sysUser == null){
+            return 0;
+        }
         SysUser temp = sysUserMapper.selectByPrimaryKey(sysUser.getId());
         if(temp == null){
             return insert(sysUser);

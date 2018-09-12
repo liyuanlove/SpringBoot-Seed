@@ -69,6 +69,9 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
 
     @Override
     public int save(DoubleColorBall doubleColorBall) {
+        if(doubleColorBall == null){
+            return 0;
+        }
         DoubleColorBall temp = doubleColorBallMapper.selectByPrimaryKey(doubleColorBall.getId());
         if(temp == null){
             return insert(doubleColorBall);

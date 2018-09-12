@@ -71,6 +71,9 @@ public class SysPermissionServiceImpl implements SysPermissionService {
 
     @Override
     public int save(SysPermission sysPermission) {
+        if(sysPermission == null){
+            return 0;
+        }
         SysPermission temp = sysPermissionMapper.selectByPrimaryKey(sysPermission.getId());
         if(temp == null){
             return insert(sysPermission);

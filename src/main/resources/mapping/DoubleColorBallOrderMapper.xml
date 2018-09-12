@@ -16,6 +16,31 @@
   <sql id="Base_Column_List" >
     id, redball1, redball2, redball3, redball4, redball5, redball6, blueball
   </sql>
+  <sql id="WhereCase">
+    <where>
+      <if test="redball1 != null" >
+        and redball1 = #{redball1,jdbcType=INTEGER}
+      </if>
+      <if test="redball2 != null" >
+        and redball2 = #{redball2,jdbcType=INTEGER}
+      </if>
+      <if test="redball3 != null" >
+        and redball3 = #{redball3,jdbcType=INTEGER}
+      </if>
+      <if test="redball4 != null" >
+        and redball4 = #{redball4,jdbcType=INTEGER}
+      </if>
+      <if test="redball5 != null" >
+        and redball5 = #{redball5,jdbcType=INTEGER}
+      </if>
+      <if test="redball6 != null" >
+        and redball6 = #{redball6,jdbcType=INTEGER}
+      </if>
+      <if test="blueball != null" >
+        and blueball = #{blueball,jdbcType=INTEGER}
+      </if>
+    </where>
+  </sql>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,6 +49,13 @@
       doublecolorball_order
     where
       id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+      <include refid="Base_Column_List" />
+    from
+      doublecolorball_order
+    <include refid="WhereCase"></include>
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
