@@ -21,7 +21,7 @@ public interface SysRoleMapper {
 
     SysRole selectByPrimaryKey(Integer rid);
 
-    List<SysRole> selectByVo(SysRole sysRoleSearch);
+    List<SysRole> selectByVo(SysRole sysRole);
 
     SysRole selectByProperty(SysRole sysRole);
 

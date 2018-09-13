@@ -8,7 +8,7 @@ public interface SysPermissionMapper {
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    List<SysPermission> selectByVo(SysPermission permissionSearch);
+    List<SysPermission> selectByVo(SysPermission sysPermission);
 
     SysPermission selectByProperty(SysPermission sysPermission);
 

@@ -30,7 +30,7 @@ public class DoubleColorMapperTest {
     @Test
     public void order(){
 
-        List<DoubleColorBall> balls = doubleColorBallService.selectAll(null);
+        List<DoubleColorBall> balls = doubleColorBallService.selectAll(new DoubleColorBall());
         for(DoubleColorBall ball : balls){
             int[] nums = new int[6];
             nums[0] = ball.getRedball1();

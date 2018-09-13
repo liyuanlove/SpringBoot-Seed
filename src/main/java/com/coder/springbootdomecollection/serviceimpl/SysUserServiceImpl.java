@@ -36,6 +36,9 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public List<SysUser> selectAll(SysUser sysUser) {
+        if(sysUser == null){
+            sysUser = new SysUser();
+        }
         return sysUserMapper.selectByVo(sysUser);
     }
 

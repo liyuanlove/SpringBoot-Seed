@@ -9,9 +9,9 @@ public interface SysPermissionService {
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermission sysPermissionSearch);
+    PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermission sysPermission);
 
-    List<SysPermission> selectAll(SysPermission sysPermissionSearch);
+    List<SysPermission> selectAll(SysPermission sysPermission);
 
     SysPermission selectByProperty(SysPermission sysPermission);
 

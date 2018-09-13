@@ -13,7 +13,7 @@
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, name, icon, pid, url, order
+    id, name, icon, pid, url, `order`
   </sql>
   <sql id="OrderBy">
     <if test="orderBy != null and orderBy != ''">
@@ -26,7 +26,7 @@
         and id = #{id,jdbcType=INTEGER}
       </if>
       <if test="name != null" >
-        and name = #{name,jdbcType=VARCHAR}
+        and `name` = #{name,jdbcType=VARCHAR}
       </if>
       <if test="icon != null" >
         and icon = #{icon,jdbcType=VARCHAR}
@@ -38,7 +38,7 @@
         and url = #{url,jdbcType=VARCHAR}
       </if>
       <if test="order != null" >
-        and order = #{order,jdbcType=INTEGER}
+        and `order` = #{order,jdbcType=INTEGER}
       </if>
       <if test="where != null and where != ''">
         and ${where}
@@ -60,7 +60,7 @@
 
   <insert id="insert" parameterType="com.coder.springbootdomecollection.model.SysMenu" >
     insert into
-      sys_menu (id, name, icon,pid, url, order)
+      sys_menu (id, name, icon,pid, url, `order`)
     values
       (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},#{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER})
   </insert>
@@ -84,7 +84,7 @@
         url,
       </if>
       <if test="order != null" >
-        order,
+        `order`,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -113,7 +113,7 @@
       SELECT LAST_INSERT_ID()
     </selectKey >
     insert into
-      sys_menu (id, name, icon,pid, url, order)
+      sys_menu (id, name, icon,pid, url, `order`)
     values
     <foreach collection="list" item="item" index="index" separator="," >
       <if test="item != null">
@@ -139,7 +139,7 @@
         url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="order != null" >
-        order = #{order,jdbcType=INTEGER},
+        `order` = #{order,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -150,7 +150,7 @@
       icon = #{icon,jdbcType=VARCHAR},
       pid = #{pid,jdbcType=INTEGER},
       url = #{url,jdbcType=VARCHAR},
-      order = #{order,jdbcType=INTEGER}
+      `order` = #{order,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -164,11 +164,11 @@
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List"></include>
+      <include refid="Base_Column_List"></include>
     from
-    sys_menu
+      sys_menu
     where
-    pid = 0;
+      pid = 0;
   </select>
 
   <!-- 级联查询 -->
@@ -179,6 +179,8 @@
       sys_menu
     where
       pid = #{id,jdbcType=INTEGER}
+    order by
+      `order` asc
   </select>
 
 </mapper>

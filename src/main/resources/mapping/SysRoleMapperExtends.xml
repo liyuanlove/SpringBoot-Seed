@@ -5,9 +5,10 @@
   <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysRole" >
     <id column="rid" property="rid" jdbcType="INTEGER" />
     <result column="rname" property="rname" jdbcType="VARCHAR" />
-    <association column="rid" select="selectPermissionByPrimaryKey" property="sysPermissionList" />
-    <association column="rid" select="selectMenusByPrimaryKey" property="sysMenuList" />
+    <association column="rid" select="selectPermissionByPrimaryKey" property="sysPermissionList" fetchType="lazy" />
+    <association column="rid" select="selectMenusByPrimaryKey" property="sysMenuList" fetchType="lazy" />
   </resultMap>
+
 
   <sql id="Base_Column_List" >
     rid, rname
@@ -157,6 +158,8 @@
       sys_menu.id = role_menu.menuid
     and
       role_menu.roleid = #{rid,jdbcType=INTEGER}
+    order by
+      `order` asc
   </select>
   <!-- 级联查询 e -->
 

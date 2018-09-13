@@ -31,6 +31,9 @@ public class SysPermissionServiceImpl implements SysPermissionService {
 
     @Override
     public List<SysPermission> selectAll(SysPermission sysPermission) {
+        if(sysPermission == null){
+            sysPermission = new SysPermission();
+        }
         return sysPermissionMapper.selectByVo(sysPermission);
     }
 

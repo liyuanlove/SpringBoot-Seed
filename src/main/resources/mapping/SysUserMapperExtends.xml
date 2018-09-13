@@ -3,20 +3,24 @@
 <mapper namespace="com.coder.springbootdomecollection.mapper.SysUserMapper">
 
     <resultMap id="BaseResultMap" type="com.coder.springbootdomecollection.model.SysUser">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="sex" jdbcType="BIT" property="sex" />
-    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-    <association column="id" property="roleList" select="selectRoleByPrimaryKey" />
-  </resultMap>
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="phone" jdbcType="VARCHAR" property="phone" />
+      <result column="sex" jdbcType="BIT" property="sex" />
+      <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+      <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+      <association column="id" property="roleList" select="selectRoleByPrimaryKey" fetchType="lazy" />
+      <association column="id" property="menuList" select="selectMenuByPrimaryKey" fetchType="lazy" />
+    </resultMap>
 
     <sql id="Base_Column_List">
         id, name, password, phone, sex, gmt_create, gmt_modified</sql>
     <sql id="Sys_Role_Base_Column_List">
         sys_role.rid,sys_role.rname
+    </sql>
+    <sql id="Sys_Menu_Base_Column_List">
+        sys_menu.id, sys_menu.`name`, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.`order`
     </sql>
     <sql id="OrderBy">
         <if test="orderBy != null and orderBy != ''">
@@ -86,6 +90,22 @@
         sys_role.rid = u.rid
       and
         u.uid = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectMenuByPrimaryKey" parameterType="java.lang.Integer" resultMap="com.coder.springbootdomecollection.mapper.SysMenuMapper.BaseResultMap">
+      select
+        <include refid="Sys_Menu_Base_Column_List" />
+      from
+        sys_menu
+      inner join
+        role_menu
+      on
+        sys_menu.id = role_menu.menuid
+      inner join
+        user_role
+      on
+        user_role.rid = role_menu.roleid
+      and
+        user_role.uid = #{id,jdbcType=INTEGER}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

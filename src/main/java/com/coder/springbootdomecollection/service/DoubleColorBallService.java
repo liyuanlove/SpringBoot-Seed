@@ -21,9 +21,9 @@ public interface DoubleColorBallService {
 
     DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall);
 
-    List<DoubleColorBall> selectAll(DoubleColorBall doubleColorBallSearch);
+    List<DoubleColorBall> selectAll(DoubleColorBall doubleColorBall);
 
-    PageInfo<DoubleColorBall> selectPage(int pageIndex, int pageSize, DoubleColorBall doubleColorBallSearch);
+    PageInfo<DoubleColorBall> selectPage(int pageIndex, int pageSize, DoubleColorBall doubleColorBall);
 
     int save(DoubleColorBall doubleColorBall);
 

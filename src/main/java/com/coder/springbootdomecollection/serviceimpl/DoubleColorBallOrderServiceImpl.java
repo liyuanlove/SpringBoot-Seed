@@ -32,6 +32,9 @@ public class DoubleColorBallOrderServiceImpl implements DoubleColorBallOrderServ
 
     @Override
     public List<DoubleColorBallOrder> selectAll(DoubleColorBallOrder doubleColorBallOrder) {
+        if(doubleColorBallOrder == null){
+            doubleColorBallOrder = new DoubleColorBallOrder();
+        }
         return doubleColorBallOrderMapper.selectByVo(doubleColorBallOrder);
     }
 

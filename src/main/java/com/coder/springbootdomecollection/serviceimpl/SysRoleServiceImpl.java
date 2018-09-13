@@ -74,6 +74,9 @@ public class SysRoleServiceImpl implements SysRoleService {
 
     @Override
     public List<SysRole> selectAll(SysRole sysRole) {
+        if(sysRole == null){
+            sysRole = new SysRole();
+        }
         return sysRoleMapper.selectByVo(sysRole);
     }
 

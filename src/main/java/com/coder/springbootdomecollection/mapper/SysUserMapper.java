@@ -7,7 +7,7 @@ import java.util.List;
 public interface SysUserMapper {
 
     SysUser selectByPrimaryKey(Integer id);
-    List<SysUser> selectByVo(SysUser sysUserSearch);
+    List<SysUser> selectByVo(SysUser sysUser);
     SysUser selectByProperty(SysUser sysUser);
 
     int deleteByPrimaryKey(Integer id);

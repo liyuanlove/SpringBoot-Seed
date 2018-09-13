@@ -6,7 +6,7 @@ import java.util.List;
 public class SysMenu extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = -8586375203691764512L;
-
+    
     private Integer id;
 
     private String name;

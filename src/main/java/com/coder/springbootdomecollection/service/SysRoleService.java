@@ -25,9 +25,9 @@ public interface SysRoleService {
 
     SysRole selectByPrimaryKey(Integer rid);
 
-    List<SysRole> selectAll(SysRole sysRoleSearch);
+    List<SysRole> selectAll(SysRole sysRole);
 
-    PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRole sysRoleSearch);
+    PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRole sysRole);
 
     SysRole selectByProperty(SysRole sysRole);
 

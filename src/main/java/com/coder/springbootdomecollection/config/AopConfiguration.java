@@ -29,15 +29,15 @@ public class AopConfiguration {
     @Pointcut("execution(* com.coder..serviceimpl.*.*(..))")
     public void executeService(){ }
 
-    @Pointcut("execution(* com.coder..model.*Search.setOrderBy(String))")
-    public void executeModelSearch(){ }
+    @Pointcut("execution(* com.coder..model.*.setOrder*(String))")
+    public void executeModelOrder(){ }
 
     /**
      * 在切入点之前
      * @param jp
      */
-    @Before("executeModelSearch()")
-    public void beforeModelSearchOrder(JoinPoint jp){
+    @Before("executeModelOrder()")
+    public void beforeModelOrder(JoinPoint jp){
         if(jp != null){
             for(Object obj:jp.getArgs()){
                 if(obj instanceof String){

@@ -20,5 +20,5 @@ public interface DoubleColorBallMapper {
 
     DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall);
 
-    List<DoubleColorBall> selectByVo(DoubleColorBall doubleColorBallSearch);
+    List<DoubleColorBall> selectByVo(DoubleColorBall doubleColorBall);
 }

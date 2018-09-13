@@ -9,9 +9,9 @@ public interface SysUserService {
 
     SysUser selectByPrimaryKey(Integer id);
 
-    List<SysUser> selectAll(SysUser sysUserSearch);
+    List<SysUser> selectAll(SysUser sysUser);
 
-    PageInfo<SysUser> selectPage(int pageIndex, int pageSize, SysUser sysUserSearch);
+    PageInfo<SysUser> selectPage(int pageIndex, int pageSize, SysUser sysUser);
 
     SysUser selectByProperty(SysUser sysUser);
 

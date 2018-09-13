@@ -24,6 +24,20 @@ public class SysUser extends BaseModel implements Serializable {
 
     private List<SysRole> roleList;
 
+    private List<SysMenu> menuList;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public List<SysMenu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<SysMenu> menuList) {
+        this.menuList = menuList;
+    }
+
     public List<SysRole> getRoleList() {
         return roleList;
     }

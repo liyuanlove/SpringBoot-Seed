@@ -57,6 +57,9 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
 
     @Override
     public List<DoubleColorBall> selectAll(DoubleColorBall doubleColorBall) {
+        if(doubleColorBall == null){
+            doubleColorBall = new DoubleColorBall();
+        }
         return doubleColorBallMapper.selectByVo(doubleColorBall);
     }
 
