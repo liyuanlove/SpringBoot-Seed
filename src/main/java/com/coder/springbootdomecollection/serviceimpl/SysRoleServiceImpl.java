@@ -2,7 +2,6 @@ package com.coder.springbootdomecollection.serviceimpl;
 
 import com.coder.springbootdomecollection.mapper.SysRoleMapper;
 import com.coder.springbootdomecollection.model.SysRole;
-import com.coder.springbootdomecollection.model.SysRoleSearch;
 import com.coder.springbootdomecollection.service.SysRoleService;
 import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
@@ -10,7 +9,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service("sysRoleService")
@@ -75,14 +73,14 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public List<SysRole> selectAll(SysRoleSearch sysRoleSearch) {
-        return sysRoleMapper.selectByVo(sysRoleSearch);
+    public List<SysRole> selectAll(SysRole sysRole) {
+        return sysRoleMapper.selectByVo(sysRole);
     }
 
     @Override
-    public PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch) {
+    public PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRole sysRole) {
         PageHelper.startPage(pageIndex,pageSize);
-        List<SysRole> sysRoles = sysRoleMapper.selectByVo(sysRoleSearch);
+        List<SysRole> sysRoles = sysRoleMapper.selectByVo(sysRole);
         return new PageInfo(sysRoles);
     }
 

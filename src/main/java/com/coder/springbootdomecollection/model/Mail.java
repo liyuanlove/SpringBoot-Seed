@@ -1,8 +1,9 @@
 package com.coder.springbootdomecollection.model;
 
+
 import java.io.Serializable;
 
-public class Mail implements Serializable {
+public class Mail extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = -6444007016951537609L;
 

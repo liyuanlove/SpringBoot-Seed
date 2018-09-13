@@ -1,6 +1,6 @@
 package com.coder.springbootdomecollection.model;
 
-public class SysMenuSearch extends SysMenu {
+public class BaseModel {
 
     private String orderBy;
 
@@ -31,5 +31,6 @@ public class SysMenuSearch extends SysMenu {
     public void setOrderSequnce(String orderSequnce) {
         this.orderSequnce = orderSequnce;
     }
+
 
 }

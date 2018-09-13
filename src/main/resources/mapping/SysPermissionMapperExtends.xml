@@ -37,7 +37,7 @@
       where
         id = #{id,jdbcType=INTEGER}
     </select>
-    <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermissionSearch" >
+    <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
     select
       <include refid="Base_Column_List" />
     from

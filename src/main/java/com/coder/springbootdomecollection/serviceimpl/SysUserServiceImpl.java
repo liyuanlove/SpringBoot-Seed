@@ -2,7 +2,6 @@ package com.coder.springbootdomecollection.serviceimpl;
 
 import com.coder.springbootdomecollection.mapper.SysUserMapper;
 import com.coder.springbootdomecollection.model.SysUser;
-import com.coder.springbootdomecollection.model.SysUserSearch;
 import com.coder.springbootdomecollection.repository.SysUserRepository;
 import com.coder.springbootdomecollection.service.SysUserService;
 import com.coder.util.CollectionUtils;
@@ -36,14 +35,14 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<SysUser> selectAll(SysUserSearch sysUserSearch) {
-        return sysUserMapper.selectByVo(sysUserSearch);
+    public List<SysUser> selectAll(SysUser sysUser) {
+        return sysUserMapper.selectByVo(sysUser);
     }
 
     @Override
-    public PageInfo<SysUser> selectPage(int pageIndex, int pageSize, SysUserSearch sysUserSearch) {
+    public PageInfo<SysUser> selectPage(int pageIndex, int pageSize, SysUser sysUser) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<SysUser> sysUsers = sysUserMapper.selectByVo(sysUserSearch);
+        List<SysUser> sysUsers = sysUserMapper.selectByVo(sysUser);
         return new PageInfo(sysUsers);
     }
 

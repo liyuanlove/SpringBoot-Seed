@@ -3,7 +3,7 @@ package com.coder.springbootdomecollection.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class SysMenu implements Serializable {
+public class SysMenu extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = -8586375203691764512L;
 

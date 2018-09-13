@@ -1,7 +1,6 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
-import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 
 import java.util.List;
 
@@ -21,5 +20,5 @@ public interface DoubleColorBallMapper {
 
     DoubleColorBall selectByProperty(DoubleColorBall doubleColorBall);
 
-    List<DoubleColorBall> selectByVo(DoubleColorBallSearch doubleColorBallSearch);
+    List<DoubleColorBall> selectByVo(DoubleColorBall doubleColorBallSearch);
 }

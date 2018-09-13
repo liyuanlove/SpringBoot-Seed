@@ -1,14 +1,11 @@
 package com.coder.springbootdomecollection.model;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = -2960579007116061731L;
 
-    @JSONField(serialize=false)
     private Integer id;
 
     private String userName;

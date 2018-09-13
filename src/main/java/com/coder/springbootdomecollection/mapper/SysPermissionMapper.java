@@ -1,8 +1,6 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.SysPermission;
-import com.coder.springbootdomecollection.model.SysPermissionSearch;
-import com.coder.springbootdomecollection.model.SysRole;
 
 import java.util.List;
 
@@ -10,7 +8,7 @@ public interface SysPermissionMapper {
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    List<SysPermission> selectByVo(SysPermissionSearch permissionSearch);
+    List<SysPermission> selectByVo(SysPermission permissionSearch);
 
     SysPermission selectByProperty(SysPermission sysPermission);
 

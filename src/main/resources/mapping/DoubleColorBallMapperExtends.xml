@@ -207,7 +207,7 @@
       doublecolorball
     <include refid="WhereCase"></include>
   </select>
-  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallSearch">
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
     select
       <include refid="BaseColumn"></include>
     from

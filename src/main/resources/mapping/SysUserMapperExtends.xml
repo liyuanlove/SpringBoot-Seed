@@ -60,7 +60,7 @@
       where
         id = #{id,jdbcType=INTEGER}
     </select>
-    <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysUserSearch">
+    <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysUser">
       select
         <include refid="Base_Column_List" />
       from

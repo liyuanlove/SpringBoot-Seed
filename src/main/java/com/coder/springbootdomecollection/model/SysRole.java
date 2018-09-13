@@ -3,9 +3,9 @@ package com.coder.springbootdomecollection.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class SysRole implements Serializable {
+public class SysRole extends BaseModel implements Serializable {
 
-    private static final long serialVersionUID = 1711078445252107437L;
+    private static final long serialVersionUID = 2388790031285434913L;
 
     private Integer rid;
 

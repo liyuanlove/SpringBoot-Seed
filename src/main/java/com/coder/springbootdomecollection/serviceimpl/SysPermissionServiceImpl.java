@@ -2,7 +2,6 @@ package com.coder.springbootdomecollection.serviceimpl;
 
 import com.coder.springbootdomecollection.mapper.SysPermissionMapper;
 import com.coder.springbootdomecollection.model.SysPermission;
-import com.coder.springbootdomecollection.model.SysPermissionSearch;
 import com.coder.springbootdomecollection.service.SysPermissionService;
 import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
@@ -24,15 +23,15 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     }
 
     @Override
-    public PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermissionSearch sysPermissionSearch) {
+    public PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermission sysPermission) {
         PageHelper.startPage(pageIndex,pageSize);
-        List<SysPermission> sysPermissions = sysPermissionMapper.selectByVo(sysPermissionSearch);
+        List<SysPermission> sysPermissions = sysPermissionMapper.selectByVo(sysPermission);
         return new PageInfo<>(sysPermissions);
     }
 
     @Override
-    public List<SysPermission> selectAll(SysPermissionSearch sysPermissionSearch) {
-        return sysPermissionMapper.selectByVo(sysPermissionSearch);
+    public List<SysPermission> selectAll(SysPermission sysPermission) {
+        return sysPermissionMapper.selectByVo(sysPermission);
     }
 
     @Override

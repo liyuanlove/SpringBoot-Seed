@@ -1,8 +1,6 @@
 package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.SysRole;
-import com.coder.springbootdomecollection.model.SysRoleSearch;
-import com.coder.springbootdomecollection.model.SysUser;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -27,9 +25,9 @@ public interface SysRoleService {
 
     SysRole selectByPrimaryKey(Integer rid);
 
-    List<SysRole> selectAll(SysRoleSearch sysRoleSearch);
+    List<SysRole> selectAll(SysRole sysRoleSearch);
 
-    PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRoleSearch sysRoleSearch);
+    PageInfo<SysRole> selectPage(int pageIndex, int pageSize, SysRole sysRoleSearch);
 
     SysRole selectByProperty(SysRole sysRole);
 

@@ -117,7 +117,7 @@
     where
       rid = #{rid,jdbcType=INTEGER}
   </select>
-  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysRoleSearch">
+  <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysRole">
     select
       <include refid="Base_Column_List"></include>
     from

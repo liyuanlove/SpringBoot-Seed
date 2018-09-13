@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class DoubleColorBall implements Serializable {
+public class DoubleColorBall extends BaseModel implements Serializable {
+
+    private static final long serialVersionUID = -1843045915400377443L;
+
     public DoubleColorBall(){}
 
     public DoubleColorBall(Integer id,Integer redball1,Integer redball2,Integer redball3,Integer redball4,Integer redball5,Integer redball6,Integer blueball,Date createdate){
@@ -18,9 +21,6 @@ public class DoubleColorBall implements Serializable {
         this.blueball = blueball;
         this.createdate = createdate;
     }
-
-
-    private static final long serialVersionUID = 6742160027060911886L;
 
     private Integer id;
 

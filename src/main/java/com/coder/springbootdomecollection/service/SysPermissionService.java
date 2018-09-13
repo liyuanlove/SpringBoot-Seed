@@ -1,8 +1,6 @@
 package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.SysPermission;
-import com.coder.springbootdomecollection.model.SysPermissionSearch;
-import com.coder.springbootdomecollection.model.SysRole;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -11,9 +9,9 @@ public interface SysPermissionService {
 
     SysPermission selectByPrimaryKey(Integer id);
 
-    PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermissionSearch sysPermissionSearch);
+    PageInfo<SysPermission> selectPage(int pageIndex, int pageSize, SysPermission sysPermissionSearch);
 
-    List<SysPermission> selectAll(SysPermissionSearch sysPermissionSearch);
+    List<SysPermission> selectAll(SysPermission sysPermissionSearch);
 
     SysPermission selectByProperty(SysPermission sysPermission);
 

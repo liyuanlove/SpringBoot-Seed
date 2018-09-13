@@ -2,7 +2,6 @@ package com.coder.springbootdomecollection.serviceimpl;
 
 import com.coder.springbootdomecollection.mapper.DoubleColorBallMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
-import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
@@ -57,14 +56,14 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
     }
 
     @Override
-    public List<DoubleColorBall> selectAll(DoubleColorBallSearch doubleColorBallSearch) {
-        return doubleColorBallMapper.selectByVo(doubleColorBallSearch);
+    public List<DoubleColorBall> selectAll(DoubleColorBall doubleColorBall) {
+        return doubleColorBallMapper.selectByVo(doubleColorBall);
     }
 
     @Override
-    public PageInfo<DoubleColorBall> selectPage(int pageIndex, int pageSize, DoubleColorBallSearch doubleColorBallSearch) {
+    public PageInfo<DoubleColorBall> selectPage(int pageIndex, int pageSize, DoubleColorBall doubleColorBall) {
         PageHelper.startPage(pageIndex,pageSize);
-        List<DoubleColorBall> doubleColorBalls = doubleColorBallMapper.selectByVo(doubleColorBallSearch);
+        List<DoubleColorBall> doubleColorBalls = doubleColorBallMapper.selectByVo(doubleColorBall);
         return new PageInfo<>(doubleColorBalls);
     }
 
