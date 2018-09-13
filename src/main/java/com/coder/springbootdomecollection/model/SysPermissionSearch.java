@@ -6,6 +6,16 @@ public class SysPermissionSearch extends SysPermission {
 
     private String orderSequnce;
 
+    private String where;
+
+    public String getWhere() {
+        return where;
+    }
+
+    public void setWhere(String where) {
+        this.where = where;
+    }
+
     public String getOrderBy() {
         return orderBy;
     }

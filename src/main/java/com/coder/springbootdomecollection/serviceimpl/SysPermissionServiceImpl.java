@@ -4,6 +4,7 @@ import com.coder.springbootdomecollection.mapper.SysPermissionMapper;
 import com.coder.springbootdomecollection.model.SysPermission;
 import com.coder.springbootdomecollection.model.SysPermissionSearch;
 import com.coder.springbootdomecollection.service.SysPermissionService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,14 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     @Override
     public int insertSelective(SysPermission sysPermission) {
         return sysPermissionMapper.insert(sysPermission);
+    }
+
+    @Override
+    public int insertToBatch(List<SysPermission> sysPermissions) {
+        if(!CollectionUtils.isNullOrEmptyStrict(sysPermissions)){
+            return sysPermissionMapper.insertToBatch(sysPermissions);
+        }
+        return 0;
     }
 
     @Override

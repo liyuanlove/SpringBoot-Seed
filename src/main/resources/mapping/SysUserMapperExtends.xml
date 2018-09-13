@@ -20,7 +20,7 @@
     </sql>
     <sql id="OrderBy">
         <if test="orderBy != null and orderBy != ''">
-            order by ${orderBy} ${orderSequnce}
+            order by sys_user.${orderBy} ${orderSequnce}
         </if>
     </sql>
     <sql id="WhereCase">
@@ -45,6 +45,9 @@
         </if>
         <if test="gmtModified != null">
           and gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+        </if>
+        <if test="where != null and where != ''">
+          and ${where}
         </if>
       </where>
     </sql>
@@ -152,6 +155,19 @@
           #{gmtModified,jdbcType=TIMESTAMP},
         </if>
       </trim>
+    </insert>
+    <insert id="insertToBatch" parameterType="java.util.List">
+      <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
+        SELECT LAST_INSERT_ID()
+      </selectKey >
+      insert into
+        sys_user (id, name, password,phone, sex, gmt_create,gmt_modified)
+      values
+      <foreach collection="list" item="item" index="index" separator="," >
+        <if test="item != null">
+          (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
+        </if>
+      </foreach>
     </insert>
 
     <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysUser">

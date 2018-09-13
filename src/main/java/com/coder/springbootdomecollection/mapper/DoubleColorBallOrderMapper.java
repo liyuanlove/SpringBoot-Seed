@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
+import com.coder.springbootdomecollection.model.SysMenu;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public interface DoubleColorBallOrderMapper {
     int insert(DoubleColorBallOrder record);
 
     int insertSelective(DoubleColorBallOrder record);
+
+    int insertToBatch(List<DoubleColorBallOrder> doubleColorBallOrders);
 
     int updateByPrimaryKeySelective(DoubleColorBallOrder record);
 

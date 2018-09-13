@@ -2,6 +2,7 @@ package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysRoleSearch;
+import com.coder.springbootdomecollection.model.SysUser;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface SysRoleService {
     int insert(SysRole sysRole);
 
     int insertSelective(SysRole sysRole);
+
+    int insertToBatch(List<SysRole> sysRoles);
 
     int updateByPrimaryKeySelective(SysRole sysRole);
 

@@ -26,11 +26,14 @@
       <if test="rname != null" >
         and rname = #{rname,jdbcType=VARCHAR}
       </if>
+      <if test="where != null and where != ''">
+        and ${where}
+      </if>
     </where>
   </sql>
   <sql id="OrderBy">
     <if test="orderBy != null and orderBy != ''">
-      order by ${orderBy} ${orderSequnce}
+      order by sys_role.${orderBy} ${orderSequnce}
     </if>
   </sql>
 
@@ -71,6 +74,19 @@
         #{rname,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+  <insert id="insertToBatch" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into
+      sys_role (rid, rname)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      <if test="item != null">
+        (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR})
+      </if>
+    </foreach>
   </insert>
 
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysRole" >

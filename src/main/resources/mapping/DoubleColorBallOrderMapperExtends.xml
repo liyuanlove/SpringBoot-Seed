@@ -39,7 +39,15 @@
       <if test="blueball != null" >
         and blueball = #{blueball,jdbcType=INTEGER}
       </if>
+      <if test="where != null and where != ''">
+        and ${where}
+      </if>
     </where>
+  </sql>
+  <sql id="OrderBy">
+    <if test="orderBy != null and orderBy != ''">
+      order by doublecolorball_order.${orderBy} ${orderSequnce}
+    </if>
   </sql>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -56,7 +64,9 @@
     from
       doublecolorball_order
     <include refid="WhereCase"></include>
+    <include refid="OrderBy"></include>
   </select>
+
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from
@@ -128,6 +138,21 @@
         #{blueball,jdbcType=INTEGER},
       </if>
     </trim>
+  </insert>
+  <insert id="insertToBatch" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into
+      doublecolorball_order (id, redball1, redball2, redball3, redball4, redball5, redball6, blueball)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      <if test="item != null">
+        (#{item.id,jdbcType=INTEGER},#{item.redball1,jdbcType=INTEGER},#{item.redball2,jdbcType=INTEGER},
+        #{item.redball3,jdbcType=INTEGER},#{item.redball4,jdbcType=INTEGER},#{item.redball5,jdbcType=INTEGER},
+        #{item.redball6,jdbcType=INTEGER},#{item.blueball,jdbcType=INTEGER})
+      </if>
+    </foreach>
   </insert>
 
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallOrder" >

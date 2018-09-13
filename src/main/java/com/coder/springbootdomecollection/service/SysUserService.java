@@ -24,6 +24,8 @@ public interface SysUserService {
 
     int insertSelective(SysUser record);
 
+    int insertToBatch(List<SysUser> sysUsers);
+
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);

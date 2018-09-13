@@ -5,6 +5,7 @@ import com.coder.springbootdomecollection.model.SysUser;
 import com.coder.springbootdomecollection.model.SysUserSearch;
 import com.coder.springbootdomecollection.repository.SysUserRepository;
 import com.coder.springbootdomecollection.service.SysUserService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,14 @@ public class SysUserServiceImpl implements SysUserService {
     public int insertSelective(SysUser sysUser) {
         sysUserRepository.save(sysUser);
         return sysUserMapper.insertSelective(sysUser);
+    }
+
+    @Override
+    public int insertToBatch(List<SysUser> sysUsers) {
+        if(!CollectionUtils.isNullOrEmptyStrict(sysUsers)){
+            return sysUserMapper.insertToBatch(sysUsers);
+        }
+        return 0;
     }
 
     @Override

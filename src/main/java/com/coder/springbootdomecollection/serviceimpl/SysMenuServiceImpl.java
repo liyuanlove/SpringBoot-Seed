@@ -3,6 +3,7 @@ package com.coder.springbootdomecollection.serviceimpl;
 import com.coder.springbootdomecollection.mapper.SysMenuMapper;
 import com.coder.springbootdomecollection.model.SysMenu;
 import com.coder.springbootdomecollection.service.SysMenuService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,14 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public int insertSelective(SysMenu sysMenu) {
         return sysMenuMapper.insertSelective(sysMenu);
+    }
+
+    @Override
+    public int insertToBatch(List<SysMenu> sysMenus) {
+        if(!CollectionUtils.isNullOrEmptyStrict(sysMenus)){
+            return sysMenuMapper.insertToBatch(sysMenus);
+        }
+        return 0;
     }
 
     @Override

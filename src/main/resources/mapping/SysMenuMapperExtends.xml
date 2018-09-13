@@ -17,7 +17,7 @@
   </sql>
   <sql id="OrderBy">
     <if test="orderBy != null and orderBy != ''">
-      order by ${orderBy} ${orderSequnce}
+      order by sys_menu.${orderBy} ${orderSequnce}
     </if>
   </sql>
   <sql id="WhereCase">
@@ -39,6 +39,9 @@
       </if>
       <if test="order != null" >
         and order = #{order,jdbcType=INTEGER}
+      </if>
+      <if test="where != null and where != ''">
+        and ${where}
       </if>
     </where>
   </sql>
@@ -104,6 +107,20 @@
         #{order,jdbcType=INTEGER},
       </if>
     </trim>
+  </insert>
+  <insert id="insertToBatch" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty="id" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into
+      sys_menu (id, name, icon,pid, url, order)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      <if test="item != null">
+        (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+        #{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER})
+      </if>
+    </foreach>
   </insert>
 
   <update id="updateByPrimaryKeySelective" parameterType="com.coder.springbootdomecollection.model.SysMenu" >

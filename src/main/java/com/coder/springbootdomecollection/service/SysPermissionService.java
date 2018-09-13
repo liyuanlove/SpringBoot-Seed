@@ -2,6 +2,7 @@ package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.SysPermission;
 import com.coder.springbootdomecollection.model.SysPermissionSearch;
+import com.coder.springbootdomecollection.model.SysRole;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public interface SysPermissionService {
     int insert(SysPermission sysPermission);
 
     int insertSelective(SysPermission sysPermission);
+
+    int insertToBatch(List<SysPermission> sysPermissions);
 
     int updateByPrimaryKeySelective(SysPermission sysPermission);
 

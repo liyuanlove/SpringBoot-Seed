@@ -4,6 +4,7 @@ import com.coder.springbootdomecollection.mapper.DoubleColorBallMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
 
     @Override
     public int insertToBatch(List<DoubleColorBall> doubleColorBalls) {
-        if(null != doubleColorBalls && doubleColorBalls.size() > 0){
+        if(!CollectionUtils.isNullOrEmptyStrict(doubleColorBalls)){
             return doubleColorBallMapper.insertToBatch(doubleColorBalls);
         }
         return 0;

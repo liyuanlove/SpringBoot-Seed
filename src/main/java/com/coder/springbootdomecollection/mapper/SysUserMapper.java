@@ -16,6 +16,7 @@ public interface SysUserMapper {
 
     int insert(SysUser sysUser);
     int insertSelective(SysUser sysUser);
+    int insertToBatch(List<SysUser> sysUsers);
 
     int updateByPrimaryKeySelective(SysUser sysUser);
     int updateByPrimaryKey(SysUser sysUser);

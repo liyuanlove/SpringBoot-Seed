@@ -3,6 +3,7 @@ package com.coder.springbootdomecollection.serviceimpl;
 import com.coder.springbootdomecollection.mapper.DoubleColorBallOrderMapper;
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
 import com.coder.springbootdomecollection.service.DoubleColorBallOrderService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,14 @@ public class DoubleColorBallOrderServiceImpl implements DoubleColorBallOrderServ
     @Override
     public int insertSelective(DoubleColorBallOrder doubleColorBallOrder) {
         return doubleColorBallOrderMapper.insertSelective(doubleColorBallOrder);
+    }
+
+    @Override
+    public int insertToBatch(List<DoubleColorBallOrder> doubleColorBallOrders) {
+        if(!CollectionUtils.isNullOrEmptyStrict(doubleColorBallOrders)){
+            return doubleColorBallOrderMapper.insertToBatch(doubleColorBallOrders);
+        }
+        return 0;
     }
 
     @Override

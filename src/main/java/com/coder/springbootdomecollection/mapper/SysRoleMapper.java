@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.mapper;
 import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysRoleSearch;
+import com.coder.springbootdomecollection.model.SysUser;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public interface SysRoleMapper {
     int insert(SysRole sysRole);
 
     int insertSelective(SysRole sysRole);
+
+    int insertToBatch(List<SysRole> sysRoles);
 
     int updateByPrimaryKeySelective(SysRole sysRole);
 

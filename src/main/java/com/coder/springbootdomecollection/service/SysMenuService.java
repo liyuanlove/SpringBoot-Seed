@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.SysMenu;
+import com.coder.springbootdomecollection.model.SysPermission;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface SysMenuService {
     int insert(SysMenu sysMenu);
 
     int insertSelective(SysMenu sysMenu);
+
+    int insertToBatch(List<SysMenu> sysMenus);
 
     int updateByPrimaryKeySelective(SysMenu sysMenu);
 

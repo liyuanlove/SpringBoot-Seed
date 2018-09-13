@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.service;
 
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
+import com.coder.springbootdomecollection.model.SysMenu;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public interface DoubleColorBallOrderService {
     int insert(DoubleColorBallOrder doubleColorBallOrder);
 
     int insertSelective(DoubleColorBallOrder doubleColorBallOrder);
+
+    int insertToBatch(List<DoubleColorBallOrder> doubleColorBallOrders);
 
     int updateByPrimaryKeySelective(DoubleColorBallOrder doubleColorBallOrder);
 

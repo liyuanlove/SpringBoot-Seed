@@ -35,9 +35,9 @@
 
     <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.coder.springbootdomecollection.model.User" >
     insert into user
-    (<include refid="DDL_Column_List" />)
+      (<include refid="DDL_Column_List" />)
     values
-    (#{userName},#{password},#{phone});
+      (#{userName},#{password},#{phone});
     </insert>
 
     <update id="update" parameterType="com.coder.springbootdomecollection.model.User">

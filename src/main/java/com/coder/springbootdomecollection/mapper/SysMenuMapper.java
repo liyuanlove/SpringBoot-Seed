@@ -3,6 +3,8 @@ package com.coder.springbootdomecollection.mapper;
 import com.coder.springbootdomecollection.model.SysMenu;
 
 import java.util.List;
+
+import com.coder.springbootdomecollection.model.SysPermission;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMenuMapper {
@@ -14,6 +16,8 @@ public interface SysMenuMapper {
     int insert(SysMenu sysMenu);
 
     int insertSelective(SysMenu sysMenu);
+
+    int insertToBatch(List<SysMenu> sysMenus);
 
     int updateByPrimaryKeySelective(SysMenu sysMenu);
 

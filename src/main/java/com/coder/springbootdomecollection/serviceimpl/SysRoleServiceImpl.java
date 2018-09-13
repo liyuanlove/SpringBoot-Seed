@@ -4,11 +4,13 @@ import com.coder.springbootdomecollection.mapper.SysRoleMapper;
 import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysRoleSearch;
 import com.coder.springbootdomecollection.service.SysRoleService;
+import com.coder.util.CollectionUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service("sysRoleService")
@@ -35,6 +37,14 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public int insertSelective(SysRole sysRole) {
         return sysRoleMapper.insertSelective(sysRole);
+    }
+
+    @Override
+    public int insertToBatch(List<SysRole> sysRoles) {
+        if(!CollectionUtils.isNullOrEmptyStrict(sysRoles)){
+            return sysRoleMapper.insertToBatch(sysRoles);
+        }
+        return 0;
     }
 
     @Override
