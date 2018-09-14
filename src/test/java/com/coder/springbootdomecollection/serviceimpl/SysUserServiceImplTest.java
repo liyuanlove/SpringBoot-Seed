@@ -1,10 +1,11 @@
 package com.coder.springbootdomecollection.serviceimpl;
 
-import com.coder.springbootdomecollection.mapper.SysUserMapper;
+import com.coder.springbootdomecollection.model.SysMenu;
 import com.coder.springbootdomecollection.model.SysPermission;
 import com.coder.springbootdomecollection.model.SysRole;
 import com.coder.springbootdomecollection.model.SysUser;
 import com.coder.springbootdomecollection.service.SysUserService;
+import com.coder.util.CollectionUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,30 @@ public class SysUserServiceImplTest {
     public void selectByPrimaryKey(){
         SysUser sysUser = sysUserService.selectByPrimaryKey(1);
         List<SysRole> roles = sysUser.getRoleList();
-        for(SysRole role : roles){
-            System.out.println(role.getRname() + ":");
-            List<SysPermission> sysPermissions = role.getSysPermissionList();
-            for(SysPermission sysPermission : sysPermissions){
-                System.out.println(sysPermission.getName());
+        List<SysMenu> menus = sysUser.getMenuList();
+        if(!CollectionUtils.isNullOrEmptyStrict(roles)){
+            for(SysRole role : roles){
+                System.out.println(role.getRname() + ":");
+                List<SysPermission> sysPermissions = role.getSysPermissionList();
+                if(!CollectionUtils.isNullOrEmptyStrict(sysPermissions)){
+                    for(SysPermission sysPermission : sysPermissions){
+                        System.out.println(sysPermission.getName());
+                    }
+                }
             }
         }
+        if(!CollectionUtils.isNullOrEmptyStrict(menus)){
+            for(SysMenu menu : menus){
+                System.out.println(menu.getName());
+            }
+        }
+    }
+
+    @Test
+    public void testSelectByProperty(){
+        SysUser user = new SysUser();
+        user.setName("735626035@qq.com");
+        SysUser temp = sysUserService.selectByProperty(user);
+        System.out.println(temp);
     }
 }

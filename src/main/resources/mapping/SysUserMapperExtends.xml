@@ -7,11 +7,11 @@
       <result column="name" jdbcType="VARCHAR" property="name" />
       <result column="password" jdbcType="VARCHAR" property="password" />
       <result column="phone" jdbcType="VARCHAR" property="phone" />
-      <result column="sex" jdbcType="BIT" property="sex" />
+      <result column="sex" jdbcType="INTEGER" property="sex" />
       <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
       <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-      <association column="id" property="roleList" select="selectRoleByPrimaryKey" fetchType="lazy" />
-      <association column="id" property="menuList" select="selectMenuByPrimaryKey" fetchType="lazy" />
+      <association column="id" property="roleList" select="selectRoleByPrimaryKey"  />
+      <association column="id" property="menuList" select="selectMenuByPrimaryKey" />
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -20,7 +20,7 @@
         sys_role.rid,sys_role.rname
     </sql>
     <sql id="Sys_Menu_Base_Column_List">
-        sys_menu.id, sys_menu.`name`, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.`order`
+        sys_menu.id, sys_menu.name, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.order
     </sql>
     <sql id="OrderBy">
         <if test="orderBy != null and orderBy != ''">
@@ -42,7 +42,7 @@
           and phone = #{phone,jdbcType=VARCHAR}
         </if>
         <if test="sex != null">
-          and sex = #{sex,jdbcType=BIT}
+          and sex = #{sex,jdbcType=INTEGER}
         </if>
         <if test="gmtCreate != null">
           and gmt_create = #{gmtCreate,jdbcType=TIMESTAMP}
@@ -106,6 +106,8 @@
         user_role.rid = role_menu.roleid
       and
         user_role.uid = #{id,jdbcType=INTEGER}
+      order by
+        `order` asc
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -124,7 +126,7 @@
       insert into
         sys_user (id, name, password,phone, sex, gmt_create,gmt_modified)
       values
-        (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
+        (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="com.coder.springbootdomecollection.model.SysUser">
       insert into
@@ -166,7 +168,7 @@
           #{phone,jdbcType=VARCHAR},
         </if>
         <if test="sex != null">
-          #{sex,jdbcType=BIT},
+          #{sex,jdbcType=INTEGER},
         </if>
         <if test="gmtCreate != null">
           #{gmtCreate,jdbcType=TIMESTAMP},
@@ -185,7 +187,7 @@
       values
       <foreach collection="list" item="item" index="index" separator="," >
         <if test="item != null">
-          (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
+          (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP},#{gmtModified,jdbcType=TIMESTAMP})
         </if>
       </foreach>
     </insert>
@@ -204,7 +206,7 @@
           phone = #{phone,jdbcType=VARCHAR},
         </if>
         <if test="sex != null">
-          sex = #{sex,jdbcType=BIT},
+          sex = #{sex,jdbcType=INTEGER},
         </if>
         <if test="gmtCreate != null">
           gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -223,7 +225,7 @@
         name = #{name,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
         phone = #{phone,jdbcType=VARCHAR},
-        sex = #{sex,jdbcType=BIT},
+        sex = #{sex,jdbcType=INTEGER},
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
         gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
       where

@@ -17,7 +17,7 @@
     sys_permission.id,sys_permission.name
   </sql>
   <sql id="Sys_Menu_Base_Column_List" >
-    sys_menu.id, sys_menu.name, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.order
+    sys_menu.id, sys_menu.name, sys_menu.icon, sys_menu.pid, sys_menu.url, sys_menu.`order`
   </sql>
   <sql id="WhereCase">
     <where>
