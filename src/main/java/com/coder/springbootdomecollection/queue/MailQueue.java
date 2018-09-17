@@ -1,12 +1,10 @@
-package com.coder.springbootdomecollection.Queue;
+package com.coder.springbootdomecollection.queue;
 
 import com.coder.springbootdomecollection.model.Mail;
 import com.coder.springbootdomecollection.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.handler.annotation.SendTo;
 
 import javax.jms.JMSException;
 import javax.jms.ObjectMessage;

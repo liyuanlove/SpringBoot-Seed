@@ -22,7 +22,9 @@ public class SysUserServiceImplTest {
 
     @Test
     public void selectByPrimaryKey(){
-        SysUser sysUser = sysUserService.selectByPrimaryKey(1);
+        SysUser temp = new SysUser();
+        temp.setName("735626035@qq.com");
+        SysUser sysUser = sysUserService.selectByProperty(temp);
         List<SysRole> roles = sysUser.getRoleList();
         List<SysMenu> menus = sysUser.getMenuList();
         if(!CollectionUtils.isNullOrEmptyStrict(roles)){
@@ -39,6 +41,9 @@ public class SysUserServiceImplTest {
         if(!CollectionUtils.isNullOrEmptyStrict(menus)){
             for(SysMenu menu : menus){
                 System.out.println(menu.getName());
+                for (SysMenu cmenu : menu.getChildrenMenus()){
+                    System.out.println(cmenu.getName());
+                }
             }
         }
     }

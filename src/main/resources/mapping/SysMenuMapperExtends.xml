@@ -9,7 +9,7 @@
     <result column="pid" property="pid" jdbcType="INTEGER" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="order" property="order" jdbcType="INTEGER" />
-    <association column="id" property="childrenMenus" select="com.coder.springbootdomecollection.mapper.SysMenuMapper.selectByPid" fetchType="lazy" />
+    <association column="id" property="childrenMenus" select="selectByPid" />
   </resultMap>
 
   <sql id="Base_Column_List" >

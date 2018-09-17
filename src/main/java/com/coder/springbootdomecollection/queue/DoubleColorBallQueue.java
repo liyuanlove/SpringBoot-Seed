@@ -1,7 +1,6 @@
-package com.coder.springbootdomecollection.Queue;
+package com.coder.springbootdomecollection.queue;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
-import com.coder.springbootdomecollection.model.Mail;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
