@@ -134,6 +134,14 @@
     <include refid="WhereCase"></include>
   </select>
 
+  <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.SysRole">
+    select
+      count(rid)
+    from
+      sys_role
+    <include refid="WhereCase"></include>
+  </select>
+
   <!-- 级联查询 s -->
   <select id="selectPermissionByPrimaryKey" resultMap="com.coder.springbootdomecollection.mapper.SysPermissionMapper.BaseResultMap" parameterType="java.lang.Integer">
     select

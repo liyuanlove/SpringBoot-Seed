@@ -81,4 +81,9 @@ public class DoubleColorBallServiceImpl implements DoubleColorBallService {
         }
         return updateSelectiveByPrimaryKey(doubleColorBall);
     }
+
+    @Override
+    public int findCount(DoubleColorBall doubleColorBall) {
+        return doubleColorBallMapper.findCount(doubleColorBall);
+    }
 }

@@ -117,4 +117,9 @@ public class SysUserServiceImpl implements SysUserService {
         }
         return updateByPrimaryKeySelective(sysUser);
     }
+
+    @Override
+    public int findCount(SysUser sysUser) {
+        return sysUserMapper.findCount(sysUser);
+    }
 }

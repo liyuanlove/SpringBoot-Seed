@@ -38,13 +38,13 @@
         id = #{id,jdbcType=INTEGER}
     </select>
     <select id="selectByVo" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
-    select
-      <include refid="Base_Column_List" />
-    from
-      sys_permission
-    <include refid="WhereCase"></include>
-    <include refid="OrderBy"></include>
-  </select>
+        select
+          <include refid="Base_Column_List" />
+        from
+          sys_permission
+        <include refid="WhereCase"></include>
+        <include refid="OrderBy"></include>
+      </select>
     <select id="selectByProperty" resultMap="BaseResultMap" parameterType="com.coder.springbootdomecollection.model.SysPermission" >
     select
       <include refid="Base_Column_List" />
@@ -124,5 +124,13 @@
         where
           id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.SysPermission">
+        select
+          count(id)
+        from
+          sys_permission
+        <include refid="WhereCase"></include>
+    </select>
 
 </mapper>

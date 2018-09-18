@@ -31,4 +31,5 @@ public interface SysPermissionService {
 
     int save(SysPermission sysPermission);
 
+    int findCount(SysPermission sysPermission);
 }

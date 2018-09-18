@@ -91,4 +91,9 @@ public class SysRoleServiceImpl implements SysRoleService {
     public SysRole selectByProperty(SysRole sysRole) {
         return sysRoleMapper.selectByProperty(sysRole);
     }
+
+    @Override
+    public int findCount(SysRole sysRole) {
+        return sysRoleMapper.findCount(sysRole);
+    }
 }

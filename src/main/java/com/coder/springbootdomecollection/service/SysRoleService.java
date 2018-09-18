@@ -31,4 +31,5 @@ public interface SysRoleService {
 
     SysRole selectByProperty(SysRole sysRole);
 
+    int findCount(SysRole sysRole);
 }

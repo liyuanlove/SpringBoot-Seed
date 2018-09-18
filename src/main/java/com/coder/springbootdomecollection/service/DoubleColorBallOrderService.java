@@ -1,5 +1,6 @@
 package com.coder.springbootdomecollection.service;
 
+import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
 import com.coder.springbootdomecollection.model.SysMenu;
 import com.github.pagehelper.PageInfo;
@@ -28,4 +29,5 @@ public interface DoubleColorBallOrderService {
 
     int save(DoubleColorBallOrder doubleColorBallOrder);
 
+    int findCount(DoubleColorBallOrder doubleColorBallOrder);
 }

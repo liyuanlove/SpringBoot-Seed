@@ -20,4 +20,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser sysUser);
     int updateByPrimaryKey(SysUser sysUser);
 
+    int findCount(SysUser sysUser);
+
 }

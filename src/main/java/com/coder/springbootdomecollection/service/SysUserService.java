@@ -31,4 +31,6 @@ public interface SysUserService {
 
     int save(SysUser sysUser);
 
+    int findCount(SysUser sysUser);
+
 }

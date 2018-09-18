@@ -216,4 +216,12 @@
     <include refid="OrderBy"></include>
   </select>
 
+  <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.DoubleColorBall">
+    select
+      count(id)
+    from
+      doublecolorball
+    <include refid="WhereCase"></include>
+  </select>
+
 </mapper>

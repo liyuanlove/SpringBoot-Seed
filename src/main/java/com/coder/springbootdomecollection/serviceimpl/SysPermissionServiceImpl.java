@@ -91,4 +91,9 @@ public class SysPermissionServiceImpl implements SysPermissionService {
         }
         return updateByPrimaryKeySelective(sysPermission);
     }
+
+    @Override
+    public int findCount(SysPermission sysPermission) {
+        return sysPermissionMapper.findCount(sysPermission);
+    }
 }

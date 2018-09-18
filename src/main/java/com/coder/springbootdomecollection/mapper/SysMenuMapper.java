@@ -5,6 +5,7 @@ import com.coder.springbootdomecollection.model.SysMenu;
 import java.util.List;
 
 import com.coder.springbootdomecollection.model.SysPermission;
+import com.coder.springbootdomecollection.model.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMenuMapper {
@@ -26,4 +27,6 @@ public interface SysMenuMapper {
     SysMenu selectByPrimaryKey(Integer id);
 
     List<SysMenu> selectAll();
+
+    int findCount(SysMenu sysMenu);
 }

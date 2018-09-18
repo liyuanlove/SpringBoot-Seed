@@ -1,6 +1,7 @@
 package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.SysPermission;
+import com.coder.springbootdomecollection.model.SysUser;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface SysPermissionMapper {
     int updateByPrimaryKeySelective(SysPermission sysPermission);
 
     int updateByPrimaryKey(SysPermission sysPermission);
+
+    int findCount(SysPermission sysPermission);
 }

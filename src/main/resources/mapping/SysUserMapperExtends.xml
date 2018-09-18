@@ -232,5 +232,11 @@
         id = #{id,jdbcType=INTEGER}
     </update>
 
-
+    <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.SysUser">
+      select
+        count(id)
+      from
+        sys_user
+      <include refid="WhereCase"></include>
+    </select>
 </mapper>

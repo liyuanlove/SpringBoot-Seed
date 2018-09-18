@@ -27,4 +27,5 @@ public interface DoubleColorBallService {
 
     int save(DoubleColorBall doubleColorBall);
 
+    int findCount(DoubleColorBall doubleColorBall);
 }

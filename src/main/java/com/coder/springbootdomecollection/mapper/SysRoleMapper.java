@@ -1,5 +1,6 @@
 package com.coder.springbootdomecollection.mapper;
 import com.coder.springbootdomecollection.model.SysRole;
+import com.coder.springbootdomecollection.model.SysUser;
 
 import java.util.List;
 
@@ -24,5 +25,7 @@ public interface SysRoleMapper {
     List<SysRole> selectByVo(SysRole sysRole);
 
     SysRole selectByProperty(SysRole sysRole);
+
+    int findCount(SysRole sysRole);
 
 }

@@ -82,4 +82,9 @@ public class DoubleColorBallOrderServiceImpl implements DoubleColorBallOrderServ
         }
         return doubleColorBallOrderMapper.updateByPrimaryKeySelective(doubleColorBallOrder);
     }
+
+    @Override
+    public int findCount(DoubleColorBallOrder doubleColorBallOrder) {
+        return doubleColorBallOrderMapper.findCount(doubleColorBallOrder);
+    }
 }

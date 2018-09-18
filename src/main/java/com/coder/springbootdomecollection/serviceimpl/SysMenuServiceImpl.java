@@ -83,4 +83,9 @@ public class SysMenuServiceImpl implements SysMenuService {
         }
         return sysMenuMapper.updateByPrimaryKeySelective(sysMenu);
     }
+
+    @Override
+    public int findCount(SysMenu sysMenu) {
+        return sysMenuMapper.findCount(sysMenu);
+    }
 }

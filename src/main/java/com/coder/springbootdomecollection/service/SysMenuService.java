@@ -29,4 +29,6 @@ public interface SysMenuService {
     PageInfo<SysMenu> selectPage(int pageIndex, int pageSize);
 
     int save(SysMenu sysMenu);
+
+    int findCount(SysMenu sysMenu);
 }

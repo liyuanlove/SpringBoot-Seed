@@ -171,6 +171,14 @@
       pid = 0;
   </select>
 
+  <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.SysMenu">
+    select
+      count(id)
+    from
+      sys_menu
+    <include refid="WhereCase"></include>
+  </select>
+
   <!-- 级联查询 -->
   <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select

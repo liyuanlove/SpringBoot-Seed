@@ -2,6 +2,7 @@ package com.coder.springbootdomecollection.mapper;
 
 import com.coder.springbootdomecollection.model.DoubleColorBallOrder;
 import com.coder.springbootdomecollection.model.SysMenu;
+import com.coder.springbootdomecollection.model.SysUser;
 
 import java.util.List;
 
@@ -13,13 +14,15 @@ public interface DoubleColorBallOrderMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(DoubleColorBallOrder record);
+    int insert(DoubleColorBallOrder doubleColorBallOrder);
 
-    int insertSelective(DoubleColorBallOrder record);
+    int insertSelective(DoubleColorBallOrder doubleColorBallOrder);
 
     int insertToBatch(List<DoubleColorBallOrder> doubleColorBallOrders);
 
-    int updateByPrimaryKeySelective(DoubleColorBallOrder record);
+    int updateByPrimaryKeySelective(DoubleColorBallOrder doubleColorBallOrder);
 
-    int updateByPrimaryKey(DoubleColorBallOrder record);
+    int updateByPrimaryKey(DoubleColorBallOrder doubleColorBallOrder);
+
+    int findCount(DoubleColorBallOrder doubleColorBallOrder);
 }

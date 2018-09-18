@@ -67,7 +67,6 @@
     <include refid="OrderBy"></include>
   </select>
 
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from
       doublecolorball_order
@@ -198,5 +197,13 @@
     where
       id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findCount" resultType="java.lang.Integer" parameterType="com.coder.springbootdomecollection.model.DoubleColorBallOrder">
+    select
+      count(id)
+    from
+      doublecolorball_order
+    <include refid="WhereCase"></include>
+  </select>
 
 </mapper>
