@@ -2,7 +2,11 @@ package com.coder.springbootdomecollection.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-public class BaseModel {
+import java.io.Serializable;
+
+public class BaseModel implements Serializable {
+
+    private static final long serialVersionUID = -2921870919538436571L;
 
     @JSONField(serialize=false)
     private String orderBy;
@@ -12,6 +16,16 @@ public class BaseModel {
 
     @JSONField(serialize=false)
     private String where;
+
+    private Boolean show = false;
+
+    public Boolean getShow(){
+        return this.show;
+    }
+
+    public void setShow(Boolean show){
+        this.show = show;
+    }
 
     public String getWhere() {
         return where;
